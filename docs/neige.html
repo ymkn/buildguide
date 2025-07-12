@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>neige</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="css/style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div class="main-container">
+  <nav id="TOC" role="doc-toc" class="toc-sidebar">
+    <h2>目次</h2>
+<ul class="incremental">
+<li><a href="#neigeビルドガイド"
+id="toc-neigeビルドガイド">Neigeビルドガイド</a>
+<ul class="incremental">
+<li><a href="#本書について" id="toc-本書について">1.
+本書について</a></li>
+<li><a href="#準備" id="toc-準備">2. 準備</a>
+<ul class="incremental">
+<li><a href="#内容物の確認" id="toc-内容物の確認">2.1
+内容物の確認</a></li>
+<li><a href="#別途用意が必要な部品" id="toc-別途用意が必要な部品">2.2
+別途用意が必要な部品</a></li>
+<li><a href="#適合するキーキャップサイズ"
+id="toc-適合するキーキャップサイズ">2.3
+適合するキーキャップサイズ</a></li>
+</ul></li>
+<li><a href="#組み立て" id="toc-組み立て">3. 組み立て</a>
+<ul class="incremental">
+<li><a href="#スイッチとキーキャップの取り付け"
+id="toc-スイッチとキーキャップの取り付け">3.1
+スイッチとキーキャップの取り付け</a></li>
+<li><a href="#基板の取り付け" id="toc-基板の取り付け">3.2
+基板の取り付け</a></li>
+</ul></li>
+<li><a href="#使用" id="toc-使用">4. 使用</a>
+<ul class="incremental">
+<li><a href="#動作確認" id="toc-動作確認">4.1 動作確認</a></li>
+<li><a href="#初期設定とキーマップのカスタマイズ"
+id="toc-初期設定とキーマップのカスタマイズ">4.2
+初期設定とキーマップのカスタマイズ</a></li>
+</ul></li>
+<li><a href="#その他" id="toc-その他">5. その他</a>
+<ul class="incremental">
+<li><a href="#ファームウェアの書き込み方"
+id="toc-ファームウェアの書き込み方">5.1
+ファームウェアの書き込み方</a></li>
+</ul></li>
+</ul></li>
+</ul>
+  </nav>
+  <main class="content">
+<h1 id="neigeビルドガイド">Neigeビルドガイド</h1>
+<h2 id="本書について">1. 本書について</h2>
+<p>本書は自作キーボードキットNeige（ネージュ）のビルドガイドです。</p>
+<h2 id="準備">2. 準備</h2>
+<h3 id="内容物の確認">2.1 内容物の確認</h3>
+<table>
+<thead>
+<tr>
+<th>番号</th>
+<th>品目</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Neige スイッチプレート</td>
+<td>1枚</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Neige メイン基板</td>
+<td>1枚</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Neige ケース</td>
+<td>1個</td>
+</tr>
+<tr>
+<td>4</td>
+<td>マウント用シリコンゴム（基板取付済）</td>
+<td>4個</td>
+</tr>
+<tr>
+<td>5</td>
+<td>M2ネジ 10mm</td>
+<td>4個</td>
+</tr>
+<tr>
+<td>6</td>
+<td>M2ナット</td>
+<td>4個</td>
+</tr>
+</tbody>
+</table>
+<h3 id="別途用意が必要な部品">2.2 別途用意が必要な部品</h3>
+<p>下記は本キットに含まれません。国内外の自作キーボード専門店や電子部品販売店などから別途調達してください。</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>品目</th>
+<th>数量</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kailh Choc V2 Full POM互換キースイッチ</td>
+<td>36</td>
+<td>Lofree
+Flow向けとして知られる5ピン仕様のものに対応します。初期の6ピンChoc
+V2スイッチとは仕様が異なるため互換性はありません。</td>
+</tr>
+<tr>
+<td>Cherry MX互換キーキャップ</td>
+<td>必要数</td>
+<td>上記スイッチで利用可能なもの。フルプロファイル向けのキーは押下時に干渉することが多いため、ロープロファイル向けのものをお勧めします。</td>
+</tr>
+<tr>
+<td>ゴム足</td>
+<td>任意</td>
+<td>底面はフラットなのでゴム足なしでも利用可能ですが、お好みに応じて追加してください</td>
+</tr>
+</tbody>
+</table>
+<h3 id="適合するキーキャップサイズ">2.3 適合するキーキャップサイズ</h3>
+<p>下記の通りのキーキャップが必要です。</p>
+<p><img src="images/neige/neige-layout-size.png" /></p>
+<table>
+<thead>
+<tr>
+<th>サイズ</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1u</td>
+<td>32</td>
+</tr>
+<tr>
+<td>1.25u</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1.5u</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1.75u</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="組み立て">3. 組み立て</h2>
+<h3 id="スイッチとキーキャップの取り付け">3.1
+スイッチとキーキャップの取り付け</h3>
+<p>スイッチプレートの穴の横方向に若干の余裕を持たせている関係で基板に挿す前だとスイッチの固定が甘く感じるかと思いますが、基板に挿せばしっかり固定されます。</p>
+<h3 id="基板の取り付け">3.2 基板の取り付け</h3>
+<p>ケースに基板を乗せます。USBコネクタの位置を確認し、向きを間違えないように注意してください。</p>
+<p>ケース底面のネジ穴からネジを通し、ナットで固定します。ナットの締め付け具合で打鍵感の調整ができます。まずはネジの先端がナットからはみ出さない程度の締め具合から始めてみてください。</p>
+<h2 id="使用">4. 使用</h2>
+<h3 id="動作確認">4.1 動作確認</h3>
+<p>コンピュータとNeigeをUSBケーブルで接続し、キーボードとして認識され、文字が入力できることを確認してください。</p>
+<h3 id="初期設定とキーマップのカスタマイズ">4.2
+初期設定とキーマップのカスタマイズ</h3>
+<p>キーマップのカスタマイズは<a
+href="https://get.vial.today/">Vial</a>にて行えます。</p>
+<p>初期キーマップで使う場合は下記からキーマップ定義をダウンロードし、<strong>インストール版</strong>のVialにて<code>File &gt; Load saved layout</code>から読み込んでください。これによりTapDanceの定義やQMK
+Settingsが復元され、作者の想定の通りに動作するようになります。</p>
+<p><a
+href="https://github.com/ymkn/neige/releases/download/v1.0/neige.vil">https://github.com/ymkn/neige/releases/download/v1.0/neige.vil</a></p>
+<p>下記記事で初期キーマップの解説をしています。30%が初めての人はご一読されることをお勧めします。</p>
+<p><a
+href="https://ymkn.hatenablog.com/entry/2025/07/12/184336">続・自作キーボードのキーの減らしかた（3行30%編）</a></p>
+<p>皆様のベストなキーマップへの一助になれば幸いです。</p>
+<h2 id="その他">5. その他</h2>
+<h3 id="ファームウェアの書き込み方">5.1 ファームウェアの書き込み方</h3>
+<p>※トラブルなどで必要がある場合のみ行ってください。</p>
+<p>ファームウェアの初期化や更新は下記の手順で行えます。</p>
+<ol class="incremental" type="1">
+<li>ファームウェアのファイルをダウンロードします。初期ファームウェアは下記にあります。</li>
+</ol>
+<p><a
+href="https://github.com/ymkn/neige/releases/download/v0.1/ymkn_neige_vial.uf2">https://github.com/ymkn/neige/releases/download/v1.0/ymkn_neige_vial.bin</a></p>
+<ol class="incremental" start="2" type="1">
+<li><a href="https://qmk.fm/toolbox">QMK
+Toolbox</a>をインストールします。</li>
+<li>QMK Toolboxを起動します。</li>
+<li>NeigeからUSBケーブルを取り外し、コンピュータと接続されていない状態にします。</li>
+<li>Neigeの一番左上のキーを<strong>押しながら</strong>USBケーブルでNeigeとコンピュータを接続、もしくはNeige基板裏面のBOOTボタンを<strong>押しながら</strong>USBケーブルでNeigeとコンピュータを接続します。</li>
+<li>QMK
+Toolboxに<code>STM32 DFU device connected (WinUSB): STMicroelectronics STM32  BOOTLOADER</code>と表示されたことを確認します。これが表示されていない場合は手順4をやり直してください。</li>
+<li>QMK
+Toolboxの<code>Open</code>ボタンを押して、書き込むファームウェアのファイルを選択してください。</li>
+<li>QMK
+Toolboxの<code>Flash</code>ボタンを押してください。ファームウェアの書き込みが始まるのでメッセージ表示が止まるまで待ってください。</li>
+<li>QMK
+Toolboxに<code>Flash complete</code>と表示されればファームウェアの書き込みは成功です。</li>
+</ol>
+  </main>
+</div>
+
+</body>
+</html>
