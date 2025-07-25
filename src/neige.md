@@ -140,4 +140,4 @@ producturl: https://ymkn.github.io/1u-nekokey/products/neige/
 
 Neigeの初期ファームウェアは下記にあります。
 
-[ファームウェアのダウンロード](https://github.com/ymkn/neige/releases/download/v0.1/ymkn_neige_vial.uf2)
+[ファームウェアのダウンロード](https://github.com/ymkn/neige/releases/download/v1.0/ymkn_neige_vial.bin)
