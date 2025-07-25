@@ -1,22 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="$lang$" xml:lang="$lang$"$if(dir)$ dir="$dir$"$endif$>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-$for(author-meta)$
-  <meta name="author" content="$author-meta$" />
-$endfor$
-$if(date-meta)$
-  <meta name="dcterms.date" content="$date-meta$" />
-$endif$
-$if(keywords)$
-  <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$" />
-$endif$
-$if(description-meta)$
-  <meta name="description" content="$description-meta$" />
-$endif$
-  <title>$if(title-prefix)$$title-prefix$ – $endif$$pagetitle$</title>
+  <title>firmware-stm</title>
   <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,18 +21,10 @@ vertical-align: middle;
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
-$for(css)$
-  <link rel="stylesheet" href="$css$" />
-$endfor$
-$if(math)$
-  $math$
-$endif$
+  <link rel="stylesheet" href="css/style.css" />
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
-$for(header-includes)$
-  $header-includes$
-$endfor$
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const tocToggle = document.querySelector('.toc-toggle');
@@ -97,12 +77,8 @@ $endfor$
   </script>
 </head>
 <body>
-$for(include-before)$
-$include-before$
-$endfor$
-$if(toc)$
 <div class="main-container">
-  <nav id="$idprefix$TOC" role="doc-toc" class="toc-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-sidebar">
     <h2 class="toc-title">
       目次
       <button class="toc-toggle" aria-expanded="true" aria-controls="toc-content">
@@ -110,61 +86,44 @@ $if(toc)$
       </button>
     </h2>
     <div id="toc-content" class="toc-content">
-$table-of-contents$
+<ul class="incremental">
+<li><a href="#ファームウェアの書き込み方stm32搭載キーボード用"
+id="toc-ファームウェアの書き込み方stm32搭載キーボード用">ファームウェアの書き込み方（STM32搭載キーボード用）</a>
+<ul class="incremental">
+<li><a href="#対象キーボード"
+id="toc-対象キーボード">対象キーボード</a></li>
+<li><a href="#section" id="toc-section"></a></li>
+</ul></li>
+</ul>
     </div>
   </nav>
   <main class="content">
-$if(title)$
-<header id="title-block-header">
-<h1 class="title">$title$</h1>
-$if(subtitle)$
-<p class="subtitle">$subtitle$</p>
-$endif$
-$for(author)$
-<p class="author">$author$</p>
-$endfor$
-$if(date)$
-<p class="date">$date$</p>
-$endif$
-$if(abstract)$
-<div class="abstract">
-<div class="abstract-title">$abstract-title$</div>
-$abstract$
-</div>
-$endif$
-</header>
-$endif$
-$body$
+<h1
+id="ファームウェアの書き込み方stm32搭載キーボード用">ファームウェアの書き込み方（STM32搭載キーボード用）</h1>
+<h2 id="対象キーボード">対象キーボード</h2>
+<p>MCUにSTM32を採用した下記のキーボードが対象です。</p>
+<ul class="incremental">
+<li><a href="./neige.html">Neige</a></li>
+</ul>
+<h2 id="section"></h2>
+<p>ファームウェアの初期化や更新は下記の手順で行えます。</p>
+<ol class="incremental" start="2" type="1">
+<li><a href="https://qmk.fm/toolbox">QMK
+Toolbox</a>をインストールします。</li>
+<li>QMK Toolboxを起動します。</li>
+<li>NeigeからUSBケーブルを取り外し、コンピュータと接続されていない状態にします。</li>
+<li>Neigeの一番左上のキーを<strong>押しながら</strong>USBケーブルでNeigeとコンピュータを接続、もしくはNeige基板裏面のBOOTボタンを<strong>押しながら</strong>USBケーブルでNeigeとコンピュータを接続します。</li>
+<li>QMK
+Toolboxに<code>STM32 DFU device connected (WinUSB): STMicroelectronics STM32  BOOTLOADER</code>と表示されたことを確認します。これが表示されていない場合は手順4をやり直してください。</li>
+<li>QMK
+Toolboxの<code>Open</code>ボタンを押して、書き込むファームウェアのファイルを選択してください。</li>
+<li>QMK
+Toolboxの<code>Flash</code>ボタンを押してください。ファームウェアの書き込みが始まるのでメッセージ表示が止まるまで待ってください。</li>
+<li>QMK
+Toolboxに<code>Flash complete</code>と表示されればファームウェアの書き込みは成功です。</li>
+</ol>
   </main>
 </div>
-$else$
-<main class="content">
-$if(title)$
-<header id="title-block-header">
-<h1 class="title">$title$</h1>
-$if(subtitle)$
-<p class="subtitle">$subtitle$</p>
-$endif$
-$for(author)$
-<p class="author">$author$</p>
-$endfor$
-$if(date)$
-<p class="date">$date$</p>
-$endif$
-$if(abstract)$
-<div class="abstract">
-<div class="abstract-title">$abstract-title$</div>
-$abstract$
-</div>
-$endif$
-</header>
-$endif$
-$body$
-</main>
-$endif$
-$for(include-after)$
-$include-after$
-$endfor$
 
 <footer class="footer">
   <div class="footer-content">
@@ -172,22 +131,6 @@ $endfor$
       <p>&copy; 2024 1uNekokey. All rights reserved.</p>
     </div>
     <div class="footer-links">
-$if(producturl)$
-      <a href="$producturl$" target="_blank" rel="noopener noreferrer" title="製品情報">
-        <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-          <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"/>
-        </svg>
-        <span>製品情報</span>
-      </a>
-$endif$
-$if(storeurl)$
-      <a href="$storeurl$" target="_blank" rel="noopener noreferrer" title="購入はこちら">
-        <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-          <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-        </svg>
-        <span>購入はこちら</span>
-      </a>
-$endif$
     </div>
   </div>
 </footer>

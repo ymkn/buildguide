@@ -96,4 +96,4 @@ for %%f in (docs\*.html) do (
 echo.
 echo Ready for GitHub Pages deployment!
 echo.
-pause
+

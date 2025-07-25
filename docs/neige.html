@@ -4,7 +4,9 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>neige</title>
+  <meta name="dcterms.date" content="2025-07-26" />
+  <meta name="description" content="1uNekokey./ymknによる自作キーボードキットNeigeのビルドガイド" />
+  <title>Neige ビルドガイド</title>
   <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,14 +27,67 @@ vertical-align: middle;
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const tocToggle = document.querySelector('.toc-toggle');
+      const tocContent = document.querySelector('.toc-content');
+      const tocIcon = document.querySelector('.toc-toggle-icon');
+      
+      if (tocToggle && tocContent) {
+        // スマホサイズかどうかを判定
+        function isMobile() {
+          return window.innerWidth <= 768;
+        }
+        
+        // 初期状態を設定
+        function setInitialState() {
+          if (isMobile()) {
+            tocContent.classList.add('collapsed');
+            tocToggle.setAttribute('aria-expanded', 'false');
+            tocIcon.textContent = '+';
+          } else {
+            tocContent.classList.remove('collapsed');
+            tocToggle.setAttribute('aria-expanded', 'true');
+            tocIcon.textContent = '−';
+          }
+        }
+        
+        // トグル機能
+        tocToggle.addEventListener('click', function() {
+          const isExpanded = tocToggle.getAttribute('aria-expanded') === 'true';
+          
+          if (isExpanded) {
+            tocContent.classList.add('collapsed');
+            tocToggle.setAttribute('aria-expanded', 'false');
+            tocIcon.textContent = '+';
+          } else {
+            tocContent.classList.remove('collapsed');
+            tocToggle.setAttribute('aria-expanded', 'true');
+            tocIcon.textContent = '−';
+          }
+        });
+        
+        // 画面サイズ変更時の処理
+        window.addEventListener('resize', function() {
+          setInitialState();
+        });
+        
+        // 初期化
+        setInitialState();
+      }
+    });
+  </script>
 </head>
 <body>
 <div class="main-container">
   <nav id="TOC" role="doc-toc" class="toc-sidebar">
-    <h2>目次</h2>
-<ul class="incremental">
-<li><a href="#neigeビルドガイド"
-id="toc-neigeビルドガイド">Neigeビルドガイド</a>
+    <h2 class="toc-title">
+      目次
+      <button class="toc-toggle" aria-expanded="true" aria-controls="toc-content">
+        <span class="toc-toggle-icon">−</span>
+      </button>
+    </h2>
+    <div id="toc-content" class="toc-content">
 <ul class="incremental">
 <li><a href="#本書について" id="toc-本書について">1.
 本書について</a></li>
@@ -51,8 +106,14 @@ id="toc-適合するキーキャップサイズ">2.3
 <li><a href="#スイッチとキーキャップの取り付け"
 id="toc-スイッチとキーキャップの取り付け">3.1
 スイッチとキーキャップの取り付け</a></li>
-<li><a href="#基板の取り付け" id="toc-基板の取り付け">3.2
+<li><a href="#絶縁シートの取り付けアルミケースのみ"
+id="toc-絶縁シートの取り付けアルミケースのみ">3.2
+絶縁シートの取り付け（※アルミケースのみ）</a></li>
+<li><a href="#基板の取り付け" id="toc-基板の取り付け">3.3
 基板の取り付け</a></li>
+<li><a href="#a-ネジ留めカバー無しの場合"
+id="toc-a-ネジ留めカバー無しの場合">3.4-A
+ネジ留め（カバー無しの場合）</a></li>
 </ul></li>
 <li><a href="#使用" id="toc-使用">4. 使用</a>
 <ul class="incremental">
@@ -67,11 +128,14 @@ id="toc-初期設定とキーマップのカスタマイズ">4.2
 id="toc-ファームウェアの書き込み方">5.1
 ファームウェアの書き込み方</a></li>
 </ul></li>
-</ul></li>
 </ul>
+    </div>
   </nav>
   <main class="content">
-<h1 id="neigeビルドガイド">Neigeビルドガイド</h1>
+<header id="title-block-header">
+<h1 class="title">Neige ビルドガイド</h1>
+<p class="date">2025-07-26</p>
+</header>
 <h2 id="本書について">1. 本書について</h2>
 <p>本書は自作キーボードキットNeige（ネージュ）のビルドガイドです。</p>
 <h2 id="準備">2. 準備</h2>
@@ -82,6 +146,7 @@ id="toc-ファームウェアの書き込み方">5.1
 <th>番号</th>
 <th>品目</th>
 <th>数量</th>
+<th>備考</th>
 </tr>
 </thead>
 <tbody>
@@ -89,34 +154,53 @@ id="toc-ファームウェアの書き込み方">5.1
 <td>1</td>
 <td>Neige スイッチプレート</td>
 <td>1枚</td>
+<td></td>
 </tr>
 <tr>
 <td>2</td>
 <td>Neige メイン基板</td>
 <td>1枚</td>
+<td></td>
 </tr>
 <tr>
 <td>3</td>
-<td>Neige ケース</td>
-<td>1個</td>
+<td>マウント用シリコンゴム</td>
+<td>4個</td>
+<td>基盤に取付済</td>
 </tr>
 <tr>
 <td>4</td>
-<td>マウント用シリコンゴム（基板取付済）</td>
-<td>4個</td>
+<td>Neige ケース</td>
+<td>1個</td>
+<td></td>
 </tr>
 <tr>
 <td>5</td>
-<td>M2ネジ 10mm</td>
-<td>4個</td>
+<td>絶縁シート (オプション)</td>
+<td>1個</td>
+<td>アルミケースにのみ付属</td>
 </tr>
 <tr>
 <td>6</td>
+<td>Neige カバー (オプション)</td>
+<td>1個</td>
+<td>カバー購入時のみ</td>
+</tr>
+<tr>
+<td>7</td>
+<td>M2ネジ 10mm</td>
+<td>4個</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
 <td>M2ナット</td>
 <td>4個</td>
+<td></td>
 </tr>
 </tbody>
 </table>
+<p><img src="images/neige/neige-contents.jpg" /></p>
 <h3 id="別途用意が必要な部品">2.2 別途用意が必要な部品</h3>
 <p>下記は本キットに含まれません。国内外の自作キーボード専門店や電子部品販売店などから別途調達してください。</p>
 <table>
@@ -146,9 +230,9 @@ V2スイッチとは仕様が異なるため互換性はありません。</td>
 <td>上記スイッチで利用可能なもの。フルプロファイル向けのキーは押下時に干渉することが多いため、ロープロファイル向けのものをお勧めします。</td>
 </tr>
 <tr>
-<td>ゴム足</td>
+<td>ゴム足等の滑り止め</td>
 <td>任意</td>
-<td>底面はフラットなのでゴム足なしでも利用可能ですが、お好みに応じて追加してください</td>
+<td>ゴム足なしでも利用可能ですが、お好みに応じて追加してください</td>
 </tr>
 </tbody>
 </table>
@@ -184,10 +268,37 @@ V2スイッチとは仕様が異なるため互換性はありません。</td>
 <h2 id="組み立て">3. 組み立て</h2>
 <h3 id="スイッチとキーキャップの取り付け">3.1
 スイッチとキーキャップの取り付け</h3>
+<p>基板のオモテ面の上にスイッチプレートを重ね、基板のスイッチ取り付け位置とスイッチプレートの穴が一致していることを確認してください。</p>
+<p>スイッチプレートの上からキースイッチを取り付けます。</p>
+<p><img src="images/neige/neige-switch.jpg" /></p>
+<p>基盤とスイッチプレートの間は1mm程度隙間が空くのが正しい状態です。</p>
+<p><img src="images/neige/neige-plate-space.jpg" /></p>
 <p>スイッチプレートの穴の横方向に若干の余裕を持たせている関係で基板に挿す前だとスイッチの固定が甘く感じるかと思いますが、基板に挿せばしっかり固定されます。</p>
-<h3 id="基板の取り付け">3.2 基板の取り付け</h3>
-<p>ケースに基板を乗せます。USBコネクタの位置を確認し、向きを間違えないように注意してください。</p>
-<p>ケース底面のネジ穴からネジを通し、ナットで固定します。ナットの締め付け具合で打鍵感の調整ができます。まずはネジの先端がナットからはみ出さない程度の締め具合から始めてみてください。</p>
+<h3 id="絶縁シートの取り付けアルミケースのみ">3.2
+絶縁シートの取り付け（※アルミケースのみ）</h3>
+<p>絶縁シートをアルミケースに乗せます。</p>
+<p><img src="images/neige/neige-sheet.jpg" /></p>
+<h3 id="基板の取り付け">3.3 基板の取り付け</h3>
+<p>スイッチとキーキャップを取り付けた基板をケースに乗せます。USBコネクタをケースの穴に通してから、基板四隅のシリコンゴムがケースの四隅のくぼみに乗るようにします。</p>
+<p><img src="images/neige/neige-assembly.jpg" /></p>
+<h3 id="a-ネジ留めカバー無しの場合">3.4-A
+ネジ留め（カバー無しの場合）</h3>
+<p>※カバー有りの場合は3.4-Bへ進んでください。</p>
+<p>ケース底面のネジ穴からネジを通します。ネジが基板四隅のシリコンゴムの中央の穴をちょうど通るようになっています。</p>
+<p><img src="images/neige/neige-screw-nocover.jpg" /></p>
+<p>ケース上面、シリコンゴムからわずかにネジの先端が出ている状態です。ここにナットを締めます。ナットを回すのではなく、ナットを指で押さえてケース底面からネジを回すと締めやすいです。</p>
+<p>ナットの締め付け具合で打鍵感の調整ができます。まずはネジの先端がナットからはみ出さない程度の締め具合から始めてみてください。</p>
+<p><img src="images/neige/neige-screw-depth.jpg" /></p>
+<p>カバー無しはこれで完成です。</p>
+<p><img src="images/neige/neige-complete-nocover.jpg" /></p>
+<h4 id="b-ネジ留めカバー有りの場合">3.4-B
+ネジ留め（カバー有りの場合）</h4>
+<p>カバーの裏面のネジ穴に直接ネジ留めします。ナットは使いません。</p>
+<p><img src="images/neige/neige-cover-screwhole.jpg" /></p>
+<p>ケースの上にカバーを乗せ、ケース底面側からネジを締めてください。このときネジを強く締めすぎないように注意してください。</p>
+<p><img src="images/neige/neige-screw-cover.jpg" /></p>
+<p>カバー付きの場合はこれで完成です。</p>
+<p><img src="images/neige/neige-complete-cover.jpg" /></p>
 <h2 id="使用">4. 使用</h2>
 <h3 id="動作確認">4.1 動作確認</h3>
 <p>コンピュータとNeigeをUSBケーブルで接続し、キーボードとして認識され、文字が入力できることを確認してください。</p>
@@ -205,30 +316,36 @@ href="https://ymkn.hatenablog.com/entry/2025/07/12/184336">続・自作キーボ
 <p>皆様のベストなキーマップへの一助になれば幸いです。</p>
 <h2 id="その他">5. その他</h2>
 <h3 id="ファームウェアの書き込み方">5.1 ファームウェアの書き込み方</h3>
-<p>※トラブルなどで必要がある場合のみ行ってください。</p>
-<p>ファームウェアの初期化や更新は下記の手順で行えます。</p>
-<ol class="incremental" type="1">
-<li>ファームウェアのファイルをダウンロードします。初期ファームウェアは下記にあります。</li>
-</ol>
+<p>※トラブル時など、必要がある場合のみ行ってください。</p>
 <p><a
-href="https://github.com/ymkn/neige/releases/download/v0.1/ymkn_neige_vial.uf2">https://github.com/ymkn/neige/releases/download/v1.0/ymkn_neige_vial.bin</a></p>
-<ol class="incremental" start="2" type="1">
-<li><a href="https://qmk.fm/toolbox">QMK
-Toolbox</a>をインストールします。</li>
-<li>QMK Toolboxを起動します。</li>
-<li>NeigeからUSBケーブルを取り外し、コンピュータと接続されていない状態にします。</li>
-<li>Neigeの一番左上のキーを<strong>押しながら</strong>USBケーブルでNeigeとコンピュータを接続、もしくはNeige基板裏面のBOOTボタンを<strong>押しながら</strong>USBケーブルでNeigeとコンピュータを接続します。</li>
-<li>QMK
-Toolboxに<code>STM32 DFU device connected (WinUSB): STMicroelectronics STM32  BOOTLOADER</code>と表示されたことを確認します。これが表示されていない場合は手順4をやり直してください。</li>
-<li>QMK
-Toolboxの<code>Open</code>ボタンを押して、書き込むファームウェアのファイルを選択してください。</li>
-<li>QMK
-Toolboxの<code>Flash</code>ボタンを押してください。ファームウェアの書き込みが始まるのでメッセージ表示が止まるまで待ってください。</li>
-<li>QMK
-Toolboxに<code>Flash complete</code>と表示されればファームウェアの書き込みは成功です。</li>
-</ol>
+href="./firmware-stm.html">ファームウェアの書き込み方（STM32搭載キーボード用）</a></p>
+<p>Neigeの初期ファームウェアは下記にあります。</p>
+<p><a
+href="https://github.com/ymkn/neige/releases/download/v0.1/ymkn_neige_vial.uf2">ファームウェアのダウンロード</a></p>
   </main>
 </div>
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-copyright">
+      <p>&copy; 2024 1uNekokey. All rights reserved.</p>
+    </div>
+    <div class="footer-links">
+      <a href="https://ymkn.github.io/1u-nekokey/products/neige/" target="_blank" rel="noopener noreferrer" title="製品情報">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"/>
+        </svg>
+        <span>製品情報</span>
+      </a>
+      <a href="https://ymkn.booth.pm/items/7146852" target="_blank" rel="noopener noreferrer" title="購入はこちら">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+        </svg>
+        <span>購入はこちら</span>
+      </a>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
