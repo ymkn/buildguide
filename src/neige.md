@@ -122,7 +122,7 @@ producturl: https://ymkn.github.io/1u-nekokey/products/neige/
 
 初期キーマップで使う場合は下記からキーマップ定義をダウンロードし、**インストール版**のVialにて`File > Load saved layout`から読み込んでください。これによりTapDanceの定義やQMK Settingsが復元され、作者の想定の通りに動作するようになります。
 
-[https://github.com/ymkn/neige/releases/download/v1.0/neige.vil](https://github.com/ymkn/neige/releases/download/v1.0/neige.vil)
+[https://github.com/ymkn/neige/releases/download/v1.0/ymkn_neige_vial.vil](https://github.com/ymkn/neige/releases/download/v1.0/ymkn_neige_vial.vil)
 
 下記記事で初期キーマップの解説をしています。30%が初めての人はご一読されることをお勧めします。
 
@@ -140,4 +140,4 @@ producturl: https://ymkn.github.io/1u-nekokey/products/neige/
 
 Neigeの初期ファームウェアは下記にあります。
 
-[ファームウェアのダウンロード](https://github.com/ymkn/neige/releases/download/v1.0/ymkn_neige_vial.bin)
+[https://github.com/ymkn/neige/releases/download/v1.0/ymkn_neige_vial.bin](https://github.com/ymkn/neige/releases/download/v1.0/ymkn_neige_vial.bin)
