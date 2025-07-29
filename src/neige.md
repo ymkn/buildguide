@@ -1,14 +1,14 @@
 ---
-title: Neige ビルドガイド
-pagetitle: Neige ビルドガイド
-date: 2025-07-26
-description-meta: 1uNekokey./ymknによる自作キーボードキットNeigeのビルドガイド
+title: neige ビルドガイド
+pagetitle: neige ビルドガイド
+date: 2025-07-30
+description-meta: 1uNekokey./ymknによる自作キーボードキットneigeのビルドガイド
 storeurl: https://ymkn.booth.pm/items/7146852
 producturl: https://ymkn.github.io/1u-nekokey/products/neige/
 ---
 ## 1. 本書について
 
-本書は自作キーボードキットNeige（ネージュ）のビルドガイドです。
+本書は自作キーボードキットneige（ネージュ）のビルドガイドです。
 
 ## 2. 準備
 
@@ -16,12 +16,12 @@ producturl: https://ymkn.github.io/1u-nekokey/products/neige/
 
 |番号|品目|数量|備考|
 |----|----|----|----|
-|1|Neige スイッチプレート|1枚||
-|2|Neige メイン基板|1枚||
+|1|neige スイッチプレート|1枚||
+|2|neige メイン基板|1枚||
 |3|マウント用シリコンゴム|4個|基盤に取付済|
-|4|Neige ケース|1個||
+|4|neige ケース|1個||
 |5|絶縁シート (オプション)|1個|アルミケースにのみ付属|
-|6|Neige カバー (オプション)|1個|カバー購入時のみ|
+|6|neige カバー (オプション)|1個|カバー購入時のみ|
 |7|M2ネジ 10mm|4個||
 |8|M2ナット|4個||
 
@@ -114,21 +114,60 @@ producturl: https://ymkn.github.io/1u-nekokey/products/neige/
 
 ### 4.1 動作確認
 
-コンピュータとNeigeをUSBケーブルで接続し、キーボードとして認識され、文字が入力できることを確認してください。
+コンピュータとneigeをUSBケーブルで接続し、キーボードとして認識され、文字が入力できることを確認してください。
 
-### 4.2 初期設定とキーマップのカスタマイズ
+初期キーマップは下記のとおりです。
 
-キーマップのカスタマイズは[Vial](https://get.vial.today/)にて行えます。
+- 短押しで各キー左上に記載の文字が、長押しで各キーの右下に記載の文字が打てます
+- Cキー長押ししながら打つと赤色で記載の文字が、Mキー長押ししながらだと青色で記載の文字が打てます
 
-初期キーマップで使う場合は下記からキーマップ定義をダウンロードし、**インストール版**のVialにて`File > Load saved layout`から読み込んでください。これによりTapDanceの定義やQMK Settingsが復元され、作者の想定の通りに動作するようになります。
+![](images/neige/neige-layout.png)
 
-[https://github.com/ymkn/neige/releases/download/v1.0/ymkn_neige_vial.vil](https://github.com/ymkn/neige/releases/download/v1.0/ymkn_neige_vial.vil)
+### 4.2 キーマップのカスタマイズ
 
-下記記事で初期キーマップの解説をしています。30%が初めての人はご一読されることをお勧めします。
+キーマップのカスタマイズと設定は[Vial](https://get.vial.today/)というツールで行えます。直感的な画面のため、ある程度は触って理解できるかと思います。詳しい使いかたは各自お調べください。
+
+また、下記記事で作者のキーマップ解説をしています。カスタマイズの参考になるかもしれません。
 
 [続・自作キーボードのキーの減らしかた（3行30%編）](https://ymkn.hatenablog.com/entry/2025/07/12/184336)
 
-皆様のベストなキーマップへの一助になれば幸いです。
+### 4.3 キーボードの設定（Tap-Hold）
+
+Vialではキーマップ変更のほか、非常に多くの設定が行えます。ここではneigeの使い勝手に関わるTap-Holdの設定項目をいくつか紹介します。
+
+特にPermissive Holdという設定はOnにすることを強く推奨します。長押しが効きにくいと感じる人はこれだけでもぜひ設定してみてください。
+
+Tap-Holdの設定は、Vial画面上部の`QMK Settings > Tap-Hold`にあります。
+
+![](images/neige/neige-vial-tap-hold.png)
+
+#### Tapping Term
+
+長押しが割り当てられているキーを押したとき、長押しと判定されるまでの時間（ミリ秒）です。
+
+長押ししたつもりが短押しになってしまうことが多い場合は、この時間を短くしてみてください。ただし、次に紹介するPermissive HoldをOnにすると大抵のケースで解消するので、Tapping Termの調整はPermissive Holdを試してからの方がよいかと思います。
+
+#### Permissive Hold
+
+初期状態ではOffですが、**On推奨**です。
+
+この設定をOnにすると、長押しが割り当てられている1つ目のキーを押しながら、2つ目のキーを押して離したときに、Tapping Termに関わらず常に1つ目のキーが長押しとして扱われるようになります。
+
+つまり単独の長押しの判定は遅めにしたいが、Ctrlやレイヤー切替など他のキーとの組み合わせる場合は即時長押しとさせたい、というときに使います。
+
+初期キーマップで言うとCキー/Mキー（長押しレイヤー切替）や、Xキー（長押しAlt）、Spaceキー（長押しCtrl）などの動作で体感しやすいかと思います。
+
+#### Hold On Other Key Press
+
+Permissive Holdの強化版設定です。2つ目のキーが押された瞬間（離す前）に1つ目のキーが長押し判定されます。
+
+1つ目のキーを早めに離してしまう癖がある場合に有効ですが、打鍵速度が速い場合は逆に誤打鍵が増えてしまう可能性があります。
+
+### 4.4 設定の初期化
+
+下記から初期設定ファイルをダウンロードし、**インストールアプリ版**のVial（v0.7.4以降）にて`File > Load saved layout`から読み込んでください。
+
+[https://github.com/ymkn/neige/releases/download/v1.0/ymkn_neige_default.vil](https://github.com/ymkn/neige/releases/download/v1.0/ymkn_neige_default.vil)
 
 ## 5. その他
 
@@ -138,7 +177,7 @@ producturl: https://ymkn.github.io/1u-nekokey/products/neige/
 
 [ファームウェアの書き込み方（STM32搭載キーボード用）](./firmware-stm.html)
 
-Neigeの初期ファームウェアは下記にあります。
+neigeの初期ファームウェアは下記にあります。
 
 [https://github.com/ymkn/neige/releases/download/v1.0/ymkn_neige_vial.bin](https://github.com/ymkn/neige/releases/download/v1.0/ymkn_neige_vial.bin)
 

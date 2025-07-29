@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <meta name="dcterms.date" content="2025-07-26" />
-  <meta name="description" content="1uNekokey./ymknによる自作キーボードキットNeigeのビルドガイド" />
-  <title>Neige ビルドガイド</title>
+  <meta name="dcterms.date" content="2025-07-30" />
+  <meta name="description" content="1uNekokey./ymknによる自作キーボードキットneigeのビルドガイド" />
+  <title>neige ビルドガイド</title>
   <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -118,9 +118,13 @@ id="toc-a-ネジ留めカバー無しの場合">3.4-A
 <li><a href="#使用" id="toc-使用">4. 使用</a>
 <ul class="incremental">
 <li><a href="#動作確認" id="toc-動作確認">4.1 動作確認</a></li>
-<li><a href="#初期設定とキーマップのカスタマイズ"
-id="toc-初期設定とキーマップのカスタマイズ">4.2
-初期設定とキーマップのカスタマイズ</a></li>
+<li><a href="#キーマップのカスタマイズ"
+id="toc-キーマップのカスタマイズ">4.2 キーマップのカスタマイズ</a></li>
+<li><a href="#キーボードの設定tap-hold"
+id="toc-キーボードの設定tap-hold">4.3
+キーボードの設定（Tap-Hold）</a></li>
+<li><a href="#設定の初期化" id="toc-設定の初期化">4.4
+設定の初期化</a></li>
 </ul></li>
 <li><a href="#その他" id="toc-その他">5. その他</a>
 <ul class="incremental">
@@ -133,11 +137,11 @@ id="toc-ファームウェアの書き込み方">5.1
   </nav>
   <main class="content">
 <header id="title-block-header">
-<h1 class="title">Neige ビルドガイド</h1>
-<p class="date">2025-07-26</p>
+<h1 class="title">neige ビルドガイド</h1>
+<p class="date">2025-07-30</p>
 </header>
 <h2 id="本書について">1. 本書について</h2>
-<p>本書は自作キーボードキットNeige（ネージュ）のビルドガイドです。</p>
+<p>本書は自作キーボードキットneige（ネージュ）のビルドガイドです。</p>
 <h2 id="準備">2. 準備</h2>
 <h3 id="内容物の確認">2.1 内容物の確認</h3>
 <table>
@@ -152,13 +156,13 @@ id="toc-ファームウェアの書き込み方">5.1
 <tbody>
 <tr>
 <td>1</td>
-<td>Neige スイッチプレート</td>
+<td>neige スイッチプレート</td>
 <td>1枚</td>
 <td></td>
 </tr>
 <tr>
 <td>2</td>
-<td>Neige メイン基板</td>
+<td>neige メイン基板</td>
 <td>1枚</td>
 <td></td>
 </tr>
@@ -170,7 +174,7 @@ id="toc-ファームウェアの書き込み方">5.1
 </tr>
 <tr>
 <td>4</td>
-<td>Neige ケース</td>
+<td>neige ケース</td>
 <td>1個</td>
 <td></td>
 </tr>
@@ -182,7 +186,7 @@ id="toc-ファームウェアの書き込み方">5.1
 </tr>
 <tr>
 <td>6</td>
-<td>Neige カバー (オプション)</td>
+<td>neige カバー (オプション)</td>
 <td>1個</td>
 <td>カバー購入時のみ</td>
 </tr>
@@ -301,25 +305,50 @@ V2スイッチとは仕様が異なるため互換性はありません。</td>
 <p><img src="images/neige/neige-complete-cover.jpg" /></p>
 <h2 id="使用">4. 使用</h2>
 <h3 id="動作確認">4.1 動作確認</h3>
-<p>コンピュータとNeigeをUSBケーブルで接続し、キーボードとして認識され、文字が入力できることを確認してください。</p>
-<h3 id="初期設定とキーマップのカスタマイズ">4.2
-初期設定とキーマップのカスタマイズ</h3>
-<p>キーマップのカスタマイズは<a
-href="https://get.vial.today/">Vial</a>にて行えます。</p>
-<p>初期キーマップで使う場合は下記からキーマップ定義をダウンロードし、<strong>インストール版</strong>のVialにて<code>File &gt; Load saved layout</code>から読み込んでください。これによりTapDanceの定義やQMK
-Settingsが復元され、作者の想定の通りに動作するようになります。</p>
-<p><a
-href="https://github.com/ymkn/neige/releases/download/v1.0/ymkn_neige_vial.vil">https://github.com/ymkn/neige/releases/download/v1.0/ymkn_neige_vial.vil</a></p>
-<p>下記記事で初期キーマップの解説をしています。30%が初めての人はご一読されることをお勧めします。</p>
+<p>コンピュータとneigeをUSBケーブルで接続し、キーボードとして認識され、文字が入力できることを確認してください。</p>
+<p>初期キーマップは下記のとおりです。</p>
+<ul class="incremental">
+<li>短押しで各キー左上に記載の文字が、長押しで各キーの右下に記載の文字が打てます</li>
+<li>Cキー長押ししながら打つと赤色で記載の文字が、Mキー長押ししながらだと青色で記載の文字が打てます</li>
+</ul>
+<p><img src="images/neige/neige-layout.png" /></p>
+<h3 id="キーマップのカスタマイズ">4.2 キーマップのカスタマイズ</h3>
+<p>キーマップのカスタマイズと設定は<a
+href="https://get.vial.today/">Vial</a>というツールで行えます。直感的な画面のため、ある程度は触って理解できるかと思います。詳しい使いかたは各自お調べください。</p>
+<p>また、下記記事で作者のキーマップ解説をしています。カスタマイズの参考になるかもしれません。</p>
 <p><a
 href="https://ymkn.hatenablog.com/entry/2025/07/12/184336">続・自作キーボードのキーの減らしかた（3行30%編）</a></p>
-<p>皆様のベストなキーマップへの一助になれば幸いです。</p>
+<h3 id="キーボードの設定tap-hold">4.3 キーボードの設定（Tap-Hold）</h3>
+<p>Vialではキーマップ変更のほか、非常に多くの設定が行えます。ここではneigeの使い勝手に関わるTap-Holdの設定項目をいくつか紹介します。</p>
+<p>特にPermissive
+Holdという設定はOnにすることを強く推奨します。長押しが効きにくいと感じる人はこれだけでもぜひ設定してみてください。</p>
+<p>Tap-Holdの設定は、Vial画面上部の<code>QMK Settings &gt; Tap-Hold</code>にあります。</p>
+<p><img src="images/neige/neige-vial-tap-hold.png" /></p>
+<h4 id="tapping-term">Tapping Term</h4>
+<p>長押しが割り当てられているキーを押したとき、長押しと判定されるまでの時間（ミリ秒）です。</p>
+<p>長押ししたつもりが短押しになってしまうことが多い場合は、この時間を短くしてみてください。ただし、次に紹介するPermissive
+HoldをOnにすると大抵のケースで解消するので、Tapping
+Termの調整はPermissive Holdを試してからの方がよいかと思います。</p>
+<h4 id="permissive-hold">Permissive Hold</h4>
+<p>初期状態ではOffですが、<strong>On推奨</strong>です。</p>
+<p>この設定をOnにすると、長押しが割り当てられている1つ目のキーを押しながら、2つ目のキーを押して離したときに、Tapping
+Termに関わらず常に1つ目のキーが長押しとして扱われるようになります。</p>
+<p>つまり単独の長押しの判定は遅めにしたいが、Ctrlやレイヤー切替など他のキーとの組み合わせる場合は即時長押しとさせたい、というときに使います。</p>
+<p>初期キーマップで言うとCキー/Mキー（長押しレイヤー切替）や、Xキー（長押しAlt）、Spaceキー（長押しCtrl）などの動作で体感しやすいかと思います。</p>
+<h4 id="hold-on-other-key-press">Hold On Other Key Press</h4>
+<p>Permissive
+Holdの強化版設定です。2つ目のキーが押された瞬間（離す前）に1つ目のキーが長押し判定されます。</p>
+<p>1つ目のキーを早めに離してしまう癖がある場合に有効ですが、打鍵速度が速い場合は逆に誤打鍵が増えてしまう可能性があります。</p>
+<h3 id="設定の初期化">4.4 設定の初期化</h3>
+<p>下記から初期設定ファイルをダウンロードし、<strong>インストールアプリ版</strong>のVial（v0.7.4以降）にて<code>File &gt; Load saved layout</code>から読み込んでください。</p>
+<p><a
+href="https://github.com/ymkn/neige/releases/download/v1.0/ymkn_neige_default.vil">https://github.com/ymkn/neige/releases/download/v1.0/ymkn_neige_default.vil</a></p>
 <h2 id="その他">5. その他</h2>
 <h3 id="ファームウェアの書き込み方">5.1 ファームウェアの書き込み方</h3>
 <p>※トラブル時など、必要がある場合のみ行ってください。</p>
 <p><a
 href="./firmware-stm.html">ファームウェアの書き込み方（STM32搭載キーボード用）</a></p>
-<p>Neigeの初期ファームウェアは下記にあります。</p>
+<p>neigeの初期ファームウェアは下記にあります。</p>
 <p><a
 href="https://github.com/ymkn/neige/releases/download/v1.0/ymkn_neige_vial.bin">https://github.com/ymkn/neige/releases/download/v1.0/ymkn_neige_vial.bin</a></p>
   </main>
