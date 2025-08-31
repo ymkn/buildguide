@@ -167,7 +167,7 @@ Permissive Holdの強化版設定です。2つ目のキーが押された瞬間�
 
 下記から初期設定ファイルをダウンロードし、**インストールアプリ版**のVial（v0.7.4以降）にて`File > Load saved layout`から読み込んでください。
 
-[https://github.com/ymkn/neige/releases/download/v1.0/ymkn_neige_default.vil](https://github.com/ymkn/neige/releases/download/v1.0/ymkn_neige_default.vil)
+[https://github.com/ymkn/neige/releases/latest/download/ymkn_neige_default.vil](https://github.com/ymkn/neige/releases/latest/download/ymkn_neige_default.vil)
 
 ## 5. その他
 
@@ -179,5 +179,11 @@ Permissive Holdの強化版設定です。2つ目のキーが押された瞬間�
 
 neigeの初期ファームウェアは下記にあります。
 
-[https://github.com/ymkn/neige/releases/download/v1.0/ymkn_neige_vial.bin](https://github.com/ymkn/neige/releases/download/v1.0/ymkn_neige_vial.bin)
+[https://github.com/ymkn/neige/releases/lastest/download/ymkn_neige_vial.bin](https://github.com/ymkn/neige/releases/latest/download/ymkn_neige_vial.bin)
 
+### 5.2 基板寸法図
+
+[neigeのGitHub](https://github.com/ymkn/neige/)からダウンロードできます。直接のリンクは下記のとおりです。
+
+- [PCB]https://github.com/ymkn/neige/releases/latest/download/Neige_PCB-brd.svg)
+- [SwitchPlate](https://github.com/ymkn/neige/releases/latest/download/Neige_SwitchPlate-brd.svg)
