@@ -185,5 +185,5 @@ neigeの初期ファームウェアは下記にあります。
 
 [neigeのGitHub](https://github.com/ymkn/neige/)からダウンロードできます。直接のリンクは下記のとおりです。
 
-- [PCB]https://github.com/ymkn/neige/releases/latest/download/Neige_PCB-brd.svg)
+- [PCB](https://github.com/ymkn/neige/releases/latest/download/Neige_PCB-brd.svg)
 - [SwitchPlate](https://github.com/ymkn/neige/releases/latest/download/Neige_SwitchPlate-brd.svg)
