@@ -24,8 +24,10 @@ producturl: https://ymkn.github.io/1u-nekokey/products/neige/
 |6|neige カバー (オプション)|1個|カバー購入時のみ|
 |7|M2ネジ 10mm|4個||
 |8|M2ナット|4個||
+|9|neige bar|2個セット|neige bar購入時のみ|
 
 ![](images/neige/neige-contents.jpg)
+![](images/neige/neige-contents-bar.jpg){ width=300px }
 
 ### 2.2 別途用意が必要な部品
 
@@ -80,7 +82,7 @@ producturl: https://ymkn.github.io/1u-nekokey/products/neige/
 
 ### 3.4-A ネジ留め（カバー無しの場合）
 
-※カバー有りの場合は3.4-Bへ進んでください。
+※カバー有りの場合は3.4-Bへ、neige barの場合は3.4-Cへ進んでください。
 
 ケース底面のネジ穴からネジを通します。ネジが基板四隅のシリコンゴムの中央の穴をちょうど通るようになっています。
 
@@ -109,6 +111,16 @@ producturl: https://ymkn.github.io/1u-nekokey/products/neige/
 カバー付きの場合はこれで完成です。
 
 ![](images/neige/neige-complete-cover.jpg)
+
+#### 3.4-C ネジ留め（neige-barの場合）
+
+neige barの裏面のネジ穴に直接ネジ留めします。ナットは使いません。
+
+![](images/neige/neige-screwhole-bar.jpg)
+
+ケースの上にneige barを乗せ、ケース底面側からネジを締めてください。このときネジを強く締めすぎないように注意してください。
+
+![](images/neige/neige-complete-bar.jpg)
 
 ## 4. 使用
 
