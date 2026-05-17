@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>firmware-stm</title>
+  <title>firmware-rp2040</title>
   <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -87,8 +87,8 @@ vertical-align: middle;
     </h2>
     <div id="toc-content" class="toc-content">
 <ul class="incremental">
-<li><a href="#ファームウェアの書き込み方stm32搭載キーボード用"
-id="toc-ファームウェアの書き込み方stm32搭載キーボード用">ファームウェアの書き込み方（STM32搭載キーボード用）</a>
+<li><a href="#ファームウェアの書き込み方rp2040搭載キーボード用"
+id="toc-ファームウェアの書き込み方rp2040搭載キーボード用">ファームウェアの書き込み方（RP2040搭載キーボード用）</a>
 <ul class="incremental">
 <li><a href="#対象キーボード"
 id="toc-対象キーボード">対象キーボード</a></li>
@@ -99,30 +99,29 @@ id="toc-対象キーボード">対象キーボード</a></li>
   </nav>
   <main class="content">
 <h1
-id="ファームウェアの書き込み方stm32搭載キーボード用">ファームウェアの書き込み方（STM32搭載キーボード用）</h1>
+id="ファームウェアの書き込み方rp2040搭載キーボード用">ファームウェアの書き込み方（RP2040搭載キーボード用）</h1>
 <h2 id="対象キーボード">対象キーボード</h2>
-<p>MCUにSTM32を採用した下記のキーボードが対象です。</p>
+<p>MCUにRP2040を採用した下記のキーボードが対象です。</p>
 <ul class="incremental">
-<li>neige</li>
-<li>YM60JISv2</li>
+<li>YM60JIS</li>
+<li>YM60A</li>
+<li>Henge40</li>
+<li>Slab40</li>
+<li>YuTofu</li>
+<li>KeeBar / KeeBar S</li>
+<li>PinKey</li>
 </ul>
 <h2 id="書き込み手順">書き込み手順</h2>
 <p>ファームウェアの初期化や更新は下記の手順で行えます。</p>
 <ol class="incremental" type="1">
 <li>ファームウェアをダウンロードします。ファームウェアのありかは各キーボードのビルドガイドを参照ください。</li>
-<li><a href="https://qmk.fm/toolbox">QMK
-Toolbox</a>をインストールします。</li>
-<li>QMK Toolboxを起動します。</li>
 <li>キーボードからUSBケーブルを取り外し、コンピュータと接続されていない状態にします。</li>
 <li>キーボードの一番左上のキーを<strong>押しながら</strong>USBケーブルでキーボードとコンピュータを接続、もしくはキーボード基板裏面のBOOTボタンを<strong>押しながら</strong>USBケーブルでキーボードとコンピュータを接続します。</li>
-<li>QMK
-Toolboxに<code>STM32 DFU device connected (WinUSB): STMicroelectronics STM32  BOOTLOADER </code>と表示されたことを確認します。これが表示されていない場合は手順4をやり直してください。</li>
-<li>QMK
-Toolboxの<code>Open</code>ボタンを押して、書き込むファームウェアのファイルを選択してください。</li>
-<li>QMK
-Toolboxの<code>Flash</code>ボタンを押してください。ファームウェアの書き込みが始まるのでメッセージ表示が止まるまで待ってください。</li>
-<li>QMK
-Toolboxに<code>Flash complete</code>と表示されればファームウェアの書き込みは成功です。</li>
+<li>コンピュータに<code>RPI-RP2</code>というUSBマスストレージデバイスがマウントされます
+(Windowsであれば、エクスプローラーで新規ドライブとして現れます) 。</li>
+<li>RPI-RP2ドライブに書き込みたいファームウェアを配置してください
+(Windowsであれば、エクスプローラでドラッグアンドドロップ、あるいはコピーペーストします)。</li>
+<li>配置するとすぐにファームウェアの書き込みが始まります。しばらく待つとキーボードがコンピュータに再認識されます。</li>
 </ol>
   </main>
 </div>

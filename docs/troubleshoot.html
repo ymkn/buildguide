@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>troubleshoot</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="css/style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const tocToggle = document.querySelector('.toc-toggle');
+      const tocContent = document.querySelector('.toc-content');
+      const tocIcon = document.querySelector('.toc-toggle-icon');
+      
+      if (tocToggle && tocContent) {
+        // スマホサイズかどうかを判定
+        function isMobile() {
+          return window.innerWidth <= 768;
+        }
+        
+        // 初期状態を設定
+        function setInitialState() {
+          if (isMobile()) {
+            tocContent.classList.add('collapsed');
+            tocToggle.setAttribute('aria-expanded', 'false');
+            tocIcon.textContent = '+';
+          } else {
+            tocContent.classList.remove('collapsed');
+            tocToggle.setAttribute('aria-expanded', 'true');
+            tocIcon.textContent = '−';
+          }
+        }
+        
+        // トグル機能
+        tocToggle.addEventListener('click', function() {
+          const isExpanded = tocToggle.getAttribute('aria-expanded') === 'true';
+          
+          if (isExpanded) {
+            tocContent.classList.add('collapsed');
+            tocToggle.setAttribute('aria-expanded', 'false');
+            tocIcon.textContent = '+';
+          } else {
+            tocContent.classList.remove('collapsed');
+            tocToggle.setAttribute('aria-expanded', 'true');
+            tocIcon.textContent = '−';
+          }
+        });
+        
+        // 画面サイズ変更時の処理
+        window.addEventListener('resize', function() {
+          setInitialState();
+        });
+        
+        // 初期化
+        setInitialState();
+      }
+    });
+  </script>
+</head>
+<body>
+<div class="main-container">
+  <nav id="TOC" role="doc-toc" class="toc-sidebar">
+    <h2 class="toc-title">
+      目次
+      <button class="toc-toggle" aria-expanded="true" aria-controls="toc-content">
+        <span class="toc-toggle-icon">−</span>
+      </button>
+    </h2>
+    <div id="toc-content" class="toc-content">
+<ul class="incremental">
+<li><a href="#故障かなと思ったら"
+id="toc-故障かなと思ったら">故障かなと思ったら</a>
+<ul class="incremental">
+<li><a href="#1-反応しないスイッチがある"
+id="toc-1-反応しないスイッチがある">1. 反応しないスイッチがある</a>
+<ul class="incremental">
+<li><a href="#スイッチの足が曲がっていませんか"
+id="toc-スイッチの足が曲がっていませんか">スイッチの足が曲がっていませんか</a></li>
+<li><a href="#スイッチパッドを利用していませんか"
+id="toc-スイッチパッドを利用していませんか">スイッチパッドを利用していませんか</a></li>
+<li><a href="#スイッチ自体は動作していますか"
+id="toc-スイッチ自体は動作していますか">スイッチ自体は動作していますか</a></li>
+<li><a href="#ファームウェア設定やキーマップの問題はありませんか"
+id="toc-ファームウェア設定やキーマップの問題はありませんか">ファームウェア設定やキーマップの問題はありませんか</a></li>
+<li><a href="#部品が浮き上がったり外れたりしていませんか"
+id="toc-部品が浮き上がったり外れたりしていませんか">部品が浮き上がったり外れたりしていませんか</a></li>
+<li><a href="#基板が破損していませんか"
+id="toc-基板が破損していませんか">基板が破損していませんか</a></li>
+</ul></li>
+<li><a href="#2-明らかに大きな傷がある"
+id="toc-2-明らかに大きな傷がある">2. 明らかに大きな傷がある</a></li>
+</ul></li>
+</ul>
+    </div>
+  </nav>
+  <main class="content">
+<h1 id="故障かなと思ったら">故障かなと思ったら</h1>
+<p>1U猫キー屋が頒布するキーボードは<a
+href="https://ymkn.github.io/1u-nekokey/support/">サポートポリシー</a>に従った初期不良サポートを提供いたしますが、問題の早期解決のため、お問い合わせ前に下記についてご確認いただけると幸いです。</p>
+<h2 id="1-反応しないスイッチがある">1. 反応しないスイッチがある</h2>
+<h3
+id="スイッチの足が曲がっていませんか">スイッチの足が曲がっていませんか</h3>
+<p>まっすぐ挿したつもりでもスイッチの足が曲がってしまいうまく差し込めていないケースがあります。曲がってしまったピンはラジオペンチなどで伸ばしてください。</p>
+<h3
+id="スイッチパッドを利用していませんか">スイッチパッドを利用していませんか</h3>
+<p>基板とスイッチの間に敷くスイッチパッドをピンで貫通させるタイプのキーボードの場合、スイッチパッドの破片がソケット接点に挟まり接触不良を起こしている場合があります。</p>
+<p>何度か抜き差しを繰り返したり、別のスイッチに変更することでピンの角度を変えると接触するようになります。</p>
+<h3
+id="スイッチ自体は動作していますか">スイッチ自体は動作していますか</h3>
+<p>スイッチにもまれに不良個体が混ざっていることがあります。他のソケットで動作が確認できているスイッチと交換して、動作するか確認してください。</p>
+<h3
+id="ファームウェア設定やキーマップの問題はありませんか">ファームウェア設定やキーマップの問題はありませんか</h3>
+<p>画面出力のないキーコードが割当たっていることで、キーが動作していないように見えている場合があります。問題のあるキーに「a」など簡単なキーマップを割り当てて動作を確認してください。</p>
+<p>あるいは、下記手順に従いファームウェアを初期化し、再度動作確認をお試しください。</p>
+<ul class="incremental">
+<li><a
+href="./firmware-rp2040.html">RP2040採用のキーボードの場合</a></li>
+<li><a href="./firmware-stm.html">STM32採用のキーボードの場合</a></li>
+</ul>
+<h3
+id="部品が浮き上がったり外れたりしていませんか">部品が浮き上がったり外れたりしていませんか</h3>
+<p>基板裏面の問題のあるキー付近を観察し、部品が浮き上がったり外れたりしていないか確認してください。</p>
+<p>出荷前には全ソケットに対して目視およびピンセットでの導通確認を行っておりますが、動作したりしなかったりする微妙な接触状態のものを見逃してしまう可能性はあります。</p>
+<p>もしそのような疑いのある状態の部品がございましたら、上面及び側面の写真を撮ってご相談ください。</p>
+<h3 id="基板が破損していませんか">基板が破損していませんか</h3>
+<p>基板裏面の問題のあるキー付近を観察し、部品が破損していたり、基板から剥がれていたり、傷などにより配線が切断されていたりしないか確認してください。</p>
+<p>出荷前には全ソケットに対して目視およびピンセットでの導通確認を行っており、明らかな破損品は除外しております。そのためユーザ様の手元で明らかな破損が見られる場合は「製品組立時に生じた物理的/電気的な破損」と見做させていただく可能性が高いです。</p>
+<h2 id="2-明らかに大きな傷がある">2. 明らかに大きな傷がある</h2>
+<p>出荷前には外観の目視確認を行っており、明らかに大きな傷がある場合は除外、もしくはB品として注記しております。そのためユーザ様の手元で明らかに大きな傷が見られる場合は「製品組立時に生じた物理的/電気的な破損」と見做させていただく可能性が高いです。</p>
+<p>但し、梱包箱の上から貫通して傷がついていると見做せる場合は、輸送中の事故として補償の対象となる可能性があります。配送方法に応じて手続きが異なるため、お問い合わせください。破損した梱包箱は証明に必要となるため保管しておいてください。</p>
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-copyright">
+      <p>&copy; 2024 1uNekokey. All rights reserved.</p>
+    </div>
+    <div class="footer-links">
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

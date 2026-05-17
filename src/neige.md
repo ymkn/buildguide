@@ -199,3 +199,11 @@ neigeの初期ファームウェアは下記にあります。
 
 - [PCB](https://github.com/ymkn/neige/releases/latest/download/Neige_PCB-brd.svg)
 - [SwitchPlate](https://github.com/ymkn/neige/releases/latest/download/Neige_SwitchPlate-brd.svg)
+
+## 6. 故障かなと思ったら
+
+下記ページを参照してご確認ください。
+
+[故障かなと思ったら](./troubleshoot.html)
+
+初期不良と思われる場合は[サポートポリシー](https://ymkn.github.io/1u-nekokey/support/)ご参照のうえお問い合わせください。

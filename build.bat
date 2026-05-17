@@ -29,6 +29,13 @@ if not exist "template\template.html" (
     exit /b 1
 )
 
+REM Check if Pandoc filter exists
+if not exist "filters\gfm-alerts.lua" (
+    echo [ERROR] Pandoc filter filters\gfm-alerts.lua not found
+    pause
+    exit /b 1
+)
+
 REM Create docs directory structure if it doesn't exist
 if not exist "docs" mkdir docs
 if not exist "docs\css" mkdir docs\css
@@ -53,7 +60,7 @@ for %%f in (src\*.md) do (
     echo [INFO] Output: docs\!filename!.html
     
     REM Convert Markdown to HTML
-    pandoc --standalone -f markdown -t html5 --css css/style.css --template template/template.html --toc -i "%%f" -o "docs\!filename!.html"
+    pandoc --standalone -f gfm -t html5 --css css/style.css --template template/template.html --lua-filter filters/gfm-alerts.lua --toc -i "%%f" -o "docs\!filename!.html"
     
     if !errorlevel! neq 0 (
         echo [ERROR] Failed to convert %%f to HTML

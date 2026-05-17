@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="dcterms.date" content="2026-05-18" />
+  <meta name="description" content="1uNekokey./ymknによる自作キーボードキットYM60JISv2のビルドガイド" />
+  <title>YM60JISv2 ビルドガイド</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="css/style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const tocToggle = document.querySelector('.toc-toggle');
+      const tocContent = document.querySelector('.toc-content');
+      const tocIcon = document.querySelector('.toc-toggle-icon');
+      
+      if (tocToggle && tocContent) {
+        // スマホサイズかどうかを判定
+        function isMobile() {
+          return window.innerWidth <= 768;
+        }
+        
+        // 初期状態を設定
+        function setInitialState() {
+          if (isMobile()) {
+            tocContent.classList.add('collapsed');
+            tocToggle.setAttribute('aria-expanded', 'false');
+            tocIcon.textContent = '+';
+          } else {
+            tocContent.classList.remove('collapsed');
+            tocToggle.setAttribute('aria-expanded', 'true');
+            tocIcon.textContent = '−';
+          }
+        }
+        
+        // トグル機能
+        tocToggle.addEventListener('click', function() {
+          const isExpanded = tocToggle.getAttribute('aria-expanded') === 'true';
+          
+          if (isExpanded) {
+            tocContent.classList.add('collapsed');
+            tocToggle.setAttribute('aria-expanded', 'false');
+            tocIcon.textContent = '+';
+          } else {
+            tocContent.classList.remove('collapsed');
+            tocToggle.setAttribute('aria-expanded', 'true');
+            tocIcon.textContent = '−';
+          }
+        });
+        
+        // 画面サイズ変更時の処理
+        window.addEventListener('resize', function() {
+          setInitialState();
+        });
+        
+        // 初期化
+        setInitialState();
+      }
+    });
+  </script>
+</head>
+<body>
+<div class="main-container">
+  <nav id="TOC" role="doc-toc" class="toc-sidebar">
+    <h2 class="toc-title">
+      目次
+      <button class="toc-toggle" aria-expanded="true" aria-controls="toc-content">
+        <span class="toc-toggle-icon">−</span>
+      </button>
+    </h2>
+    <div id="toc-content" class="toc-content">
+<ul class="incremental">
+<li><a href="#1-本書について" id="toc-1-本書について">1.
+本書について</a></li>
+<li><a href="#2-準備" id="toc-2-準備">2. 準備</a>
+<ul class="incremental">
+<li><a href="#21-内容物の確認" id="toc-21-内容物の確認">2.1
+内容物の確認</a></li>
+<li><a href="#22-別途用意が必要な部品ロープロファイルで作成する場合"
+id="toc-22-別途用意が必要な部品ロープロファイルで作成する場合">2.2
+別途用意が必要な部品（ロープロファイルで作成する場合）</a></li>
+<li><a
+href="#23-別途用意が必要な部品ハイプロファイルファイルで作成する場合"
+id="toc-23-別途用意が必要な部品ハイプロファイルファイルで作成する場合">2.3
+別途用意が必要な部品（ハイプロファイルファイルで作成する場合）</a></li>
+<li><a href="#24-適合するキーキャップサイズ"
+id="toc-24-適合するキーキャップサイズ">2.4
+適合するキーキャップサイズ</a></li>
+</ul></li>
+<li><a href="#3-組み立て" id="toc-3-組み立て">3. 組み立て</a>
+<ul class="incremental">
+<li><a href="#31-スタビライザーの取り付け"
+id="toc-31-スタビライザーの取り付け">3.1
+スタビライザーの取り付け</a></li>
+<li><a href="#32-スイッチとキーキャップの取り付け"
+id="toc-32-スイッチとキーキャップの取り付け">3.2
+スイッチとキーキャップの取り付け</a></li>
+</ul></li>
+<li><a href="#4-使用" id="toc-4-使用">4. 使用</a>
+<ul class="incremental">
+<li><a href="#41-動作確認" id="toc-41-動作確認">4.1 動作確認</a></li>
+<li><a href="#42-キーマップのカスタマイズ"
+id="toc-42-キーマップのカスタマイズ">4.2
+キーマップのカスタマイズ</a></li>
+</ul></li>
+<li><a href="#5-その他" id="toc-5-その他">5. その他</a>
+<ul class="incremental">
+<li><a href="#51-ファームウェアの書き込み方"
+id="toc-51-ファームウェアの書き込み方">5.1
+ファームウェアの書き込み方</a></li>
+</ul></li>
+<li><a href="#6-故障かなと思ったら" id="toc-6-故障かなと思ったら">6.
+故障かなと思ったら</a></li>
+</ul>
+    </div>
+  </nav>
+  <main class="content">
+<header id="title-block-header">
+<h1 class="title">YM60JISv2 ビルドガイド</h1>
+<p class="date">2026-05-18</p>
+</header>
+<h2 id="1-本書について">1. 本書について</h2>
+<p>本書は自作キーボードキットYM60JISv2のビルドガイドです。</p>
+<h2 id="2-準備">2. 準備</h2>
+<h3 id="21-内容物の確認">2.1 内容物の確認</h3>
+<table>
+<thead>
+<tr>
+<th>番号</th>
+<th>品目</th>
+<th>数量</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>YM60JISv2 スイッチプレート (ハイプロファイル用)</td>
+<td>1枚</td>
+<td>1.6mm厚</td>
+</tr>
+<tr>
+<td>2</td>
+<td>YM60JISv2 スイッチプレート (ロープロファイル用)</td>
+<td>1枚</td>
+<td>1.2mm厚</td>
+</tr>
+<tr>
+<td>3</td>
+<td>YM60JISv2 メイン基板（PCB）</td>
+<td>1枚</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><img src="images/ym60jisv2/ym60jisv2-contents.jpg" /></p>
+<h3 id="22-別途用意が必要な部品ロープロファイルで作成する場合">2.2
+別途用意が必要な部品（ロープロファイルで作成する場合）</h3>
+<p>下記は本キットに含まれません。国内外の自作キーボード専門店や電子部品販売店などから別途調達してください。</p>
+<table>
+<thead>
+<tr>
+<th>品目</th>
+<th>数量</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gateron Low Profile 3.0互換キースイッチ</td>
+<td>68</td>
+<td>Nuphy社の最新ロープロファイルキーボードで用いられている規格のスイッチのみに対応します</td>
+</tr>
+<tr>
+<td>Gateron Low Profile Plate Mount Stabilizer (2Uサイズ)</td>
+<td>3</td>
+<td>Gateron社が販売するロープロファイル向けのプレートマウントスタビライザーのみに対応します</td>
+</tr>
+<tr>
+<td>Cherry MX互換キーキャップ</td>
+<td>必要数</td>
+<td>PFFプロファイルなどのロープロファイル向けキーキャップの利用を推奨します</td>
+</tr>
+<tr>
+<td>Poker互換60%サイズキーボードケース</td>
+<td>1</td>
+<td>Poker互換、60%、GH60対応品、などと称して販売されているトレイマウント型のケースが利用できます（※すべてのケースで完全な互換性を保証するものではありません）</td>
+</tr>
+</tbody>
+</table>
+<h4 id="221-gateron-low-profile-30スイッチについて">2.2.1 Gateron Low
+Profile 3.0スイッチについて</h4>
+<p>2026年5月現在、流通しているGateron Low Profile
+3.0スイッチは下記のみです。これ以外のロープロファイルスイッチは使用できません。</p>
+<ul class="incremental">
+<li><a
+href="https://www.gateron.com/products/gateron-ks-33-low-profile-30-mechanical-switch?VariantsId=11401">Red(リニア),
+Brown(タクタイル)</a></li>
+<li><a
+href="https://www.gateron.com/products/gateron-low-profile-grey-heron-switch?VariantsId=10866">Grey
+Heron(リニア)</a></li>
+<li><a
+href="https://nuphy.com/products/gateron-low-profile-3-0-switches">Silver(リニア軽量),
+Blush(リニア静音)</a></li>
+<li><a href="https://sanyollc.com/products/panda-nano-switches">Panda
+nano(タクタイル)</a></li>
+</ul>
+<p>Gateron公式のほか、Amazon、Nuphy（日本ではDIGIART）などから購入できます。</p>
+<ul class="incremental">
+<li>※沢山の種類が出ているGateron Low Profile <strong>2.0</strong>
+とは互換性が無く、使用できません。3.0と見た目が非常に似ておりかつシリーズ型番も「KS-33」で同じであるため極めて紛らわしいです。誤って購入しないようご注意ください</li>
+<li>※Lofree製キーボードや多くのロープロファイル自作キーボードで採用されているKailh
+Chocとは互換性が無く、使用できません</li>
+</ul>
+<h4 id="222-スタビライザーについて">2.2.2 スタビライザーについて</h4>
+<p>左Shiftキー、スペースキー、Enterキー用にそれぞれ2Uサイズが必要です。Gateronから発売されている<a
+href="https://www.gateron.com/products/gateron-low-profile-plate-mounted-stabilizer">Gateron
+Low Profile Plate Mount Stabilizer</a>もしくは<a
+href="https://www.gateron.com/products/gateron-low-profile-sky-plate-mounted-stabilizer">Gateron
+Low Profile Sky Plate Mount
+Stabilizer</a>（色違い）のみが利用可能です。AmazonのGateron公式ストアから購入可能です。</p>
+<ul class="incremental">
+<li>※Gateron Low Profile Plate Mount Stablizerは、Gateron Low Profile
+2.0と3.0両方に互換性があります。販売サイトによっては3.0への対応の記載がないことがありますが、問題ありません</li>
+<li>※Lofree製キーボードで採用されているKailh
+Choc用プレートスタビライザーは使用できません</li>
+</ul>
+<h3
+id="23-別途用意が必要な部品ハイプロファイルファイルで作成する場合">2.3
+別途用意が必要な部品（ハイプロファイルファイルで作成する場合）</h3>
+<p>下記は本キットに含まれません。国内外の自作キーボード専門店や電子部品販売店などから別途調達してください。</p>
+<table>
+<thead>
+<tr>
+<th>品目</th>
+<th>数量</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MX互換キースイッチ</td>
+<td>68</td>
+<td>Cherry MXもしくはその互換品</td>
+</tr>
+<tr>
+<td>MX互換キーキャップ</td>
+<td>必要数</td>
+<td>Cherry MXもしくはその互換品</td>
+</tr>
+<tr>
+<td>2uサイズPCBマウント型スタビライザー</td>
+<td>3</td>
+<td>幅の広いキーの押し下げを安定させる部品です。左Shiftキー、スペースキー、Enterキーに用います。（※ロープロファイル向けやプレートマウント型は使用できませんので間違えないように注意ください）</td>
+</tr>
+<tr>
+<td>Poker互換60%サイズキーボードケース</td>
+<td>1</td>
+<td>Poker互換、60%、GH60対応品、などと称して販売されているトレイマウント型のケースが利用できます（※すべてのケースで完全な互換性を保証するものではありません）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="24-適合するキーキャップサイズ">2.4
+適合するキーキャップサイズ</h3>
+<p>下記の通りのキーキャップが必要です。</p>
+<p><img src="images/ym60jisv2/ym60jisv2-layout-size.png" /></p>
+<table>
+<thead>
+<tr>
+<th>サイズ</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1u</td>
+<td>58</td>
+</tr>
+<tr>
+<td>1.25u</td>
+<td>5</td>
+</tr>
+<tr>
+<td>1.5u</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1.75u</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2u</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2.75u</td>
+<td>1</td>
+</tr>
+<tr>
+<td>ISO Enter</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>フルプロファイル向けのキーキャップセットは選択肢が多く存在しますが、ロープロファイル用のキーキャップセットは限られており、2026年5月時点では下記のみです。</p>
+<ul class="incremental">
+<li><a
+href="https://jezailfunder.jp/products/lak-blank">JezailFunder製LAKキーキャップのバラ売り</a>の方で揃える</li>
+<li>その他、Group
+BuyなどでPFFプロファイルのキーキャップセットを入手する</li>
+</ul>
+<p>また、既製品で日本語配列向けの印字があり、かつYM60JISv2に適合するキーキャップは殆ど存在しません（※）。印字が重要な場合は、<a
+href="https://yuzukeycaps.com/ja">Yuzu Custom
+Keycap</a>で自分で指定したものをオーダーするのが確実です。</p>
+<p>※ <a href="https://keeb-on.com/collections/acid-caps">Acid
+Capsシリーズ</a>が日本語配列向けの唯一の選択肢です。但し、ロープロファイル向けのセットにはスペースキー（2.75u）が含まれないため、Shiftキーで代用となります</p>
+<h2 id="3-組み立て">3. 組み立て</h2>
+<p>※組み立てを始める前に、基板ウラ面の部品の状態がわかるような写真を撮影しておくことをお勧めします。初期不良で問い合わせる際の説明に役立ちます。</p>
+<h3 id="31-スタビライザーの取り付け">3.1 スタビライザーの取り付け</h3>
+<h4 id="311-ロープロファイル向けの場合">3.1.1
+ロープロファイル向けの場合</h4>
+<p>プレートの切り欠きがある方にワイヤーが来るようにスタビライザーの向きを揃え、プレートのウラ面からスタビライザーの足をオモテ面に通します。</p>
+<p><img src="images/ym60jisv2/ym60jisv2-lpstab1.jpg" /></p>
+<p>ワイヤーがある側の足をプレートのくぼみに引っ掛けます。</p>
+<p><img src="images/ym60jisv2/ym60jisv2-lpstab2.jpg" /></p>
+<p>もう片方の足をプレートオモテ面から押し込めば取り付け完了です。</p>
+<p><img src="images/ym60jisv2/ym60jisv2-lpstab3.jpg" /></p>
+<h4 id="312-ハイプロファイル向けの場合">3.1.2
+ハイプロファイル向けの場合</h4>
+<p>PCBの丸い切り欠きのある方にプッシュピン側が来るように、スタビライザーの向きを揃えます。</p>
+<p><img src="images/ym60jisv2/ym60jisv2-mxstab1.jpg" /></p>
+<p>ワイヤー側の爪を基板ウラ面に引っ掛けます。</p>
+<p><img src="images/ym60jisv2/ym60jisv2-mxstab2.jpg" /></p>
+<p>プッシュピン側を丸い穴に押し込みます。ネジ止めの場合は基板ウラ面からネジを締めてください。</p>
+<p><img src="images/ym60jisv2/ym60jisv2-mxstab3.jpg" /></p>
+<h3 id="32-スイッチとキーキャップの取り付け">3.2
+スイッチとキーキャップの取り付け</h3>
+<p>基板のオモテ面の上にスイッチプレートを重ね、基板のスイッチ取り付け位置とスイッチプレートの穴が一致していることを確認してください。</p>
+<p>そして、スイッチプレートの上からキースイッチを取り付けます。プレートと基板の間はある程度の隙間が空いた状態が正常です（ハイプロファイルで約3.5mm、ロープロファイルで約1mm）。</p>
+<div class="warning">
+<div class="title">
+<p>Warning</p>
+</div>
+<p>取り付けの際はスイッチのピンが曲がらないように優しく差し込んでください。ピンが曲がった状態で力をかけてしまうと、曲がったピンでソケットが押されて基板の部品剥がれに繋がります。組立時の破損は保証対象外となりますので注意してください。</p>
+</div>
+<p>Gateron Low Profile
+3.0スイッチは爪が大きく、硬い素材のプレートにハマりにくいことがあります。このような場合はピンセットなどでスイッチの爪を押しながら押し込むと入れやすいです。</p>
+<p><img src="images/ym60jisv2/ym60jisv2-lpsw.jpg" /></p>
+<h2 id="4-使用">4. 使用</h2>
+<h3 id="41-動作確認">4.1 動作確認</h3>
+<p>コンピュータとYM60JISv2をUSBケーブルで接続し、キーボードとして認識され、文字が入力できることを確認してください。</p>
+<p>初期キーマップは下記のとおりです。</p>
+<p><img src="images/ym60jisv2/ym60jisv2-layout.png" /></p>
+<h3 id="42-キーマップのカスタマイズ">4.2 キーマップのカスタマイズ</h3>
+<p>キーマップのカスタマイズと設定は<a
+href="https://get.vial.today/">Vial</a>というツールで行えます。直感的な画面のため、ある程度は触って理解できるかと思います。詳しい使いかたは各自お調べください。</p>
+<h2 id="5-その他">5. その他</h2>
+<h3 id="51-ファームウェアの書き込み方">5.1
+ファームウェアの書き込み方</h3>
+<p>※トラブル時など、必要がある場合のみ行ってください。</p>
+<p><a
+href="./firmware-stm.html">ファームウェアの書き込み方（STM32搭載キーボード用）</a></p>
+<p>YM60JISv2の初期ファームウェアは下記にあります。</p>
+<p><a
+href="https://github.com/ymkn/YM60JISv2/releases/latest/download/ymkn_ym60jisv2_vial.bin">GitHubからダウンロード</a></p>
+<h2 id="6-故障かなと思ったら">6. 故障かなと思ったら</h2>
+<p>下記ページを参照してご確認ください。</p>
+<p><a href="./troubleshoot.html">故障かなと思ったら</a></p>
+<p>初期不良と思われる場合は<a
+href="https://ymkn.github.io/1u-nekokey/support/">サポートポリシー</a>ご参照のうえお問い合わせください。</p>
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-copyright">
+      <p>&copy; 2024 1uNekokey. All rights reserved.</p>
+    </div>
+    <div class="footer-links">
+      <a href="<a
+href="https://ymkn.github.io/1u-nekokey/products/ym60lp/">https://ymkn.github.io/1u-nekokey/products/ym60lp/</a>" target="_blank" rel="noopener noreferrer" title="製品情報">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"/>
+        </svg>
+        <span>製品情報</span>
+      </a>
+      <a href="<a
+href="https://ymkn.booth.pm/items/7937882">https://ymkn.booth.pm/items/7937882</a>" target="_blank" rel="noopener noreferrer" title="購入はこちら">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+        </svg>
+        <span>購入はこちら</span>
+      </a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
