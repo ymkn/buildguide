@@ -3,8 +3,8 @@ title: neige ビルドガイド
 pagetitle: neige ビルドガイド
 date: 2025-07-30
 description-meta: 1uNekokey./ymknによる自作キーボードキットneigeのビルドガイド
-storeurl: https://ymkn.booth.pm/items/7146852
-producturl: https://ymkn.github.io/1u-nekokey/products/neige/
+storeurl: "https://ymkn.booth.pm/items/7146852"
+producturl: "https://ymkn.github.io/1u-nekokey/products/neige/"
 ---
 ## 1. 本書について
 

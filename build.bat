@@ -60,7 +60,7 @@ for %%f in (src\*.md) do (
     echo [INFO] Output: docs\!filename!.html
     
     REM Convert Markdown to HTML
-    pandoc --standalone -f gfm -t html5 --css css/style.css --template template/template.html --lua-filter filters/gfm-alerts.lua --toc -i "%%f" -o "docs\!filename!.html"
+    pandoc --standalone -f gfm-autolink_bare_uris -t html5 --css css/style.css --template template/template.html --lua-filter filters/gfm-alerts.lua --toc -i "%%f" -o "docs\!filename!.html"
     
     if !errorlevel! neq 0 (
         echo [ERROR] Failed to convert %%f to HTML

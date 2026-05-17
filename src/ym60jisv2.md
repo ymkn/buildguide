@@ -3,8 +3,8 @@ title: YM60JISv2 ビルドガイド
 pagetitle: YM60JISv2 ビルドガイド
 date: 2026-05-18
 description-meta: 1uNekokey./ymknによる自作キーボードキットYM60JISv2のビルドガイド
-storeurl: https://ymkn.booth.pm/items/7937882
-producturl: https://ymkn.github.io/1u-nekokey/products/ym60lp/
+storeurl: "https://ymkn.booth.pm/items/7937882"
+producturl: "https://ymkn.github.io/1u-nekokey/products/ym60jisv2/"
 ---
 ## 1. 本書について
 

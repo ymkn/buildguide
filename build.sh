@@ -64,7 +64,7 @@ for mdfile in src/*.md; do
     echo "[INFO] Output: docs/$filename.html"
     
     # Convert Markdown to HTML
-    pandoc --standalone -f gfm -t html5 --css css/style.css --template template/template.html --lua-filter filters/gfm-alerts.lua --toc -i "$mdfile" -o "docs/$filename.html"
+    pandoc --standalone -f gfm-autolink_bare_uris -t html5 --css css/style.css --template template/template.html --lua-filter filters/gfm-alerts.lua --toc -i "$mdfile" -o "docs/$filename.html"
     
     if [ $? -ne 0 ]; then
         echo "[ERROR] Failed to convert $mdfile to HTML"
