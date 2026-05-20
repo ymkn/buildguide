@@ -52,6 +52,8 @@ producturl: "https://ymkn.github.io/1u-nekokey/products/neige/"
 |1.5u|1|
 |1.75u|2|
 
+カスタムキーキャップセットのオーダーサービスYuzu Keycapで[neige用のプリセット](https://yuzukeycaps.com/keyboards/neige?aff=YMKN10)が提供されています。こちらをカスタマイズして好みの色や印字で作成するのもオススメです。
+
 ## 3. 組み立て
 
 ### 3.1 スイッチとキーキャップの取り付け
