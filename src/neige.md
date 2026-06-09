@@ -193,7 +193,7 @@ Permissive Holdの強化版設定です。2つ目のキーが押された瞬間�
 
 neigeの初期ファームウェアは下記にあります。
 
-[https://github.com/ymkn/neige/releases/lastest/download/ymkn_neige_vial.bin](https://github.com/ymkn/neige/releases/latest/download/ymkn_neige_vial.bin)
+[https://github.com/ymkn/neige/releases/latest/download/ymkn_neige_vial.bin](https://github.com/ymkn/neige/releases/latest/download/ymkn_neige_vial.bin)
 
 ### 5.2 基板寸法図
 
