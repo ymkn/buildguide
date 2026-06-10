@@ -97,8 +97,6 @@ Gateronから発売されている[Gateron Low Profile Plate Mount Stabilizer](h
 
 また、既製品で日本語配列向けの印字があり、かつYM60JISv2に適合するキーキャップは殆ど存在しません（※）。印字が重要な場合は、[Yuzu Custom Keycap](https://yuzukeycaps.com/ja)でPFFプロファイルのセットをオーダーするのが確実です。
 
-TODO: ここにYuzuのリンク
-
 ※ [Acid Capsシリーズ](https://keeb-on.com/collections/acid-caps)が日本語配列向けの唯一の選択肢です。但し、ロープロファイル向けのセットにはスペースキー（2.75u）が含まれないため、Shiftキーで代用となります
 
 ## 3. 組み立て
