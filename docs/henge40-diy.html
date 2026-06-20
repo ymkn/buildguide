@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="dcterms.date" content="2026-06-11" />
+  <meta name="description" content="1uNekokey./ymknによる自作キーボードキットHenge40
+DIYキットのビルドガイド" />
+  <title>Henge40 DIYキット ビルドガイド</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="css/style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const tocToggle = document.querySelector('.toc-toggle');
+      const tocContent = document.querySelector('.toc-content');
+      const tocIcon = document.querySelector('.toc-toggle-icon');
+      
+      if (tocToggle && tocContent) {
+        // スマホサイズかどうかを判定
+        function isMobile() {
+          return window.innerWidth <= 768;
+        }
+        
+        // 初期状態を設定
+        function setInitialState() {
+          if (isMobile()) {
+            tocContent.classList.add('collapsed');
+            tocToggle.setAttribute('aria-expanded', 'false');
+            tocIcon.textContent = '+';
+          } else {
+            tocContent.classList.remove('collapsed');
+            tocToggle.setAttribute('aria-expanded', 'true');
+            tocIcon.textContent = '−';
+          }
+        }
+        
+        // トグル機能
+        tocToggle.addEventListener('click', function() {
+          const isExpanded = tocToggle.getAttribute('aria-expanded') === 'true';
+          
+          if (isExpanded) {
+            tocContent.classList.add('collapsed');
+            tocToggle.setAttribute('aria-expanded', 'false');
+            tocIcon.textContent = '+';
+          } else {
+            tocContent.classList.remove('collapsed');
+            tocToggle.setAttribute('aria-expanded', 'true');
+            tocIcon.textContent = '−';
+          }
+        });
+        
+        // 画面サイズ変更時の処理
+        window.addEventListener('resize', function() {
+          setInitialState();
+        });
+        
+        // 初期化
+        setInitialState();
+      }
+    });
+  </script>
+</head>
+<body>
+<div class="main-container">
+  <nav id="TOC" role="doc-toc" class="toc-sidebar">
+    <h2 class="toc-title">
+      目次
+      <button class="toc-toggle" aria-expanded="true" aria-controls="toc-content">
+        <span class="toc-toggle-icon">−</span>
+      </button>
+    </h2>
+    <div id="toc-content" class="toc-content">
+<ul class="incremental">
+<li><a href="#1-本書について" id="toc-1-本書について">1.
+本書について</a></li>
+<li><a href="#2-準備" id="toc-2-準備">2. 準備</a>
+<ul class="incremental">
+<li><a href="#21-内容物の確認" id="toc-21-内容物の確認">2.1
+内容物の確認</a></li>
+<li><a href="#22-別途用意が必要な部品"
+id="toc-22-別途用意が必要な部品">2.2 別途用意が必要な部品</a></li>
+<li><a href="#23-適合するキーキャップサイズ"
+id="toc-23-適合するキーキャップサイズ">2.3
+適合するキーキャップサイズ</a></li>
+<li><a href="#24-道具" id="toc-24-道具">2.4 道具</a></li>
+</ul></li>
+<li><a href="#3-組み立て前の注意" id="toc-3-組み立て前の注意">3.
+組み立て前の注意</a></li>
+<li><a href="#4-組み立て手順" id="toc-4-組み立て手順">4.
+組み立て手順</a>
+<ul class="incremental">
+<li><a href="#41-スタビライザーの取り付け"
+id="toc-41-スタビライザーの取り付け">4.1
+スタビライザーの取り付け</a></li>
+<li><a href="#42-スイッチパッドの取り付け"
+id="toc-42-スイッチパッドの取り付け">4.2
+スイッチパッドの取り付け</a></li>
+<li><a href="#43-スイッチとスイッチプレートの取り付け"
+id="toc-43-スイッチとスイッチプレートの取り付け">4.3
+スイッチとスイッチプレートの取り付け</a></li>
+<li><a href="#44-ドーターボードの取り付け"
+id="toc-44-ドーターボードの取り付け">4.4
+ドーターボードの取り付け</a></li>
+<li><a href="#45-ボトムプレートの取り付け"
+id="toc-45-ボトムプレートの取り付け">4.5
+ボトムプレートの取り付け</a></li>
+<li><a href="#46-キーキャップの取り付け"
+id="toc-46-キーキャップの取り付け">4.6 キーキャップの取り付け</a></li>
+</ul></li>
+<li><a href="#5-使用" id="toc-5-使用">5. 使用</a>
+<ul class="incremental">
+<li><a href="#51-動作確認" id="toc-51-動作確認">5.1 動作確認</a></li>
+<li><a href="#52-キーマップのカスタマイズ"
+id="toc-52-キーマップのカスタマイズ">5.2
+キーマップのカスタマイズ</a></li>
+</ul></li>
+<li><a href="#6-その他" id="toc-6-その他">6. その他</a>
+<ul class="incremental">
+<li><a href="#61-ブートモードの入り方"
+id="toc-61-ブートモードの入り方">6.1 ブートモードの入り方</a></li>
+<li><a href="#62-ファームウェアの書き込み方"
+id="toc-62-ファームウェアの書き込み方">6.2
+ファームウェアの書き込み方</a></li>
+<li><a href="#63-ソースコード設計データのありか"
+id="toc-63-ソースコード設計データのありか">6.3
+ソースコード/設計データのありか</a></li>
+<li><a href="#64-故障かなと思ったら" id="toc-64-故障かなと思ったら">6.4
+故障かなと思ったら</a></li>
+</ul></li>
+</ul>
+    </div>
+  </nav>
+  <main class="content">
+<header id="title-block-header">
+<h1 class="title">Henge40 DIYキット ビルドガイド</h1>
+<p class="date">2026-06-11</p>
+</header>
+<h2 id="1-本書について">1. 本書について</h2>
+<p>本書は自作キーボードキットHenge40 DIYキットのビルドガイドです。</p>
+<p>Henge40 DIYキットは、<a
+href="https://ymkn.booth.pm/items/6482393">Henge40</a>の専用アルミケースを含まない、基板だけの構成です。付属のボトムプレートを使ってサンドイッチマウントスタイルで組み立てることも、ケースデータ等を参考にしてケースを自作し、そのケースに組み込んで使うこともできます。</p>
+<p>本書ではボトムプレートを使ったサンドイッチマウントでの組み立てについて説明します。ケースデータを使って作った自作ケースに組み込む場合は、<a
+href="https://github.com/ymkn/Henge40/blob/main/doc/buildguide.md">Henge40のビルドガイド</a>を参考にしてください。</p>
+<h2 id="2-準備">2. 準備</h2>
+<h3 id="21-内容物の確認">2.1 内容物の確認</h3>
+<p>製品到着後すぐに内容物を確認し、不足や破損があった場合は保証期間内にお問い合わせください。</p>
+<table>
+<thead>
+<tr>
+<th>番号</th>
+<th>品目</th>
+<th>数量</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Henge40 メイン基板</td>
+<td>1枚</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Henge40 ドーターボード</td>
+<td>1個</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Henge40 スイッチプレート</td>
+<td>1枚</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Henge40 スイッチパッド</td>
+<td>1枚</td>
+<td>メイン基板とスイッチの間に敷く</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Henge40 ケースフォーム</td>
+<td>1枚</td>
+<td>ケースに組み込む場合にボトムケース側に敷く</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Henge40 ボトムプレート</td>
+<td>1枚</td>
+<td>サンドイッチマウント構成で使用</td>
+</tr>
+<tr>
+<td>7</td>
+<td>FPCケーブル 150mm 8ピン 1mmピッチ</td>
+<td>1本</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Damping Ball シリコンゴム</td>
+<td>4個</td>
+<td>ケースに組み込む場合にガスケットマウント材として使用</td>
+</tr>
+<tr>
+<td>9</td>
+<td>M2ねじ(銀) 4mm</td>
+<td>4個</td>
+<td>Henge40ケース固定用</td>
+</tr>
+<tr>
+<td>10</td>
+<td>M2ねじ(黒) 4mm</td>
+<td>4個</td>
+<td>ドーターボード固定用</td>
+</tr>
+<tr>
+<td>11</td>
+<td>M2ナット</td>
+<td>4個</td>
+<td>ドーターボード固定用</td>
+</tr>
+<tr>
+<td>12</td>
+<td>M3ねじ(金) 5mm</td>
+<td>4個</td>
+<td>スイッチプレート固定用</td>
+</tr>
+<tr>
+<td>13</td>
+<td>M3ねじ(黒) 4mm</td>
+<td>4個</td>
+<td>ボトムプレート固定用</td>
+</tr>
+<tr>
+<td>14</td>
+<td>M3スペーサー 10mm</td>
+<td>4個</td>
+<td>サンドイッチマウント用</td>
+</tr>
+<tr>
+<td>15</td>
+<td>M3シリコンワッシャー 1mm</td>
+<td>4個</td>
+<td>スペーサーとスイッチプレートの間に挟んで使用</td>
+</tr>
+</tbody>
+</table>
+<div class="note">
+<div class="title">
+<p>Note</p>
+</div>
+<p>本キットには、Henge40専用アルミケースおよびスイッチフォームは含まれておりません。</p>
+</div>
+<h3 id="22-別途用意が必要な部品">2.2 別途用意が必要な部品</h3>
+<p>下記は本キットに含まれません。国内外の自作キーボード専門店や電子部品販売店などから別途調達してください。</p>
+<table>
+<thead>
+<tr>
+<th>品目</th>
+<th>数量</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MX互換キースイッチ</td>
+<td>39-41</td>
+<td>Cherry MXもしくはその互換品</td>
+</tr>
+<tr>
+<td>MX互換キーキャップ</td>
+<td>必要数</td>
+<td>Cherry MXもしくはその互換品</td>
+</tr>
+<tr>
+<td>2uサイズPCBマウント型スタビライザー</td>
+<td>2-3</td>
+<td>最下段で2u/2.75uキーを使う場合に必要です</td>
+</tr>
+<tr>
+<td>3uサイズPCBマウント型スタビライザー</td>
+<td>1</td>
+<td>最下段で3uキーを使う場合に必要です</td>
+</tr>
+<tr>
+<td>7uサイズPCBマウント型スタビライザー</td>
+<td>1</td>
+<td>最下段で7uキーを使う場合に必要です</td>
+</tr>
+<tr>
+<td>ゴム足等の滑り止め</td>
+<td>任意</td>
+<td>ボトムプレートで組む場合など、お好みに応じて追加してください</td>
+</tr>
+</tbody>
+</table>
+<div class="note">
+<div class="title">
+<p>Note</p>
+</div>
+<p>必要なスタビライザーの数とサイズは、選択する最下段レイアウトによって変わります。利用するキーキャップ構成に合わせて用意してください。</p>
+</div>
+<h3 id="23-適合するキーキャップサイズ">2.3
+適合するキーキャップサイズ</h3>
+<p>Henge40は40%キーボードのため、一般的なキーキャップセットには含まれないサイズがあります。購入前に必要なサイズが揃っているか確認してください。</p>
+<table>
+<thead>
+<tr>
+<th>行</th>
+<th>サイズ</th>
+<th>初期レイアウトの対応キー名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R1</td>
+<td>-</td>
+<td>本キーボードにR1行はありません。最上段はR2行となります</td>
+</tr>
+<tr>
+<td>R2</td>
+<td>1u</td>
+<td>Tabキー</td>
+</tr>
+<tr>
+<td>R2</td>
+<td>1.75u</td>
+<td>Backspaceキー</td>
+</tr>
+<tr>
+<td>R3</td>
+<td>1.25u</td>
+<td>Controlキー</td>
+</tr>
+<tr>
+<td>R3</td>
+<td>1.5u</td>
+<td>Enterキー</td>
+</tr>
+<tr>
+<td>R4</td>
+<td>1.75u</td>
+<td>Shiftキー</td>
+</tr>
+<tr>
+<td>R4</td>
+<td>1u</td>
+<td>Shiftキー</td>
+</tr>
+<tr>
+<td>R4</td>
+<td>2u x 2, 2.75u, 3u, 7u</td>
+<td>スペースキー。選択する最下段レイアウトにより異なります</td>
+</tr>
+</tbody>
+</table>
+<p>上に示したキー名はあくまで初期レイアウトのものです。キーマップはお好みに変更可能です。また、キーキャップの印字内容は動作に影響しないため、同じ行・同じサイズのキーキャップであれば異なる印字でもお使いいただけます。</p>
+<p>また、Yuzu KeycapsにてHenge40専用デザインのキーキャップセットの<a
+href="https://yuzukeycaps.com/c/fd4c518a-8afc-438e-90b2-e3d33be1ccdc?aff=YMKN10">Henge40
+Yozoraを10%引きで購入</a>できます。</p>
+<p><img src="images/henge40-diy/henge40-yozora.png"
+alt="Henge40 Yozora Keycap set" /></p>
+<h3 id="24-道具">2.4 道具</h3>
+<p>以下の道具が必要です。</p>
+<table>
+<thead>
+<tr>
+<th>品目</th>
+<th>数量</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M2/M3ねじ用のプラス精密ドライバー</td>
+<td>1</td>
+<td>ネジ留めに用います。自作ケースを用いる場合は`軸径3mm以下の細いもの推奨</td>
+</tr>
+<tr>
+<td>キースイッチ/キーキャッププラー</td>
+<td>任意</td>
+<td>スイッチやキーキャップを外す際にあると便利です</td>
+</tr>
+<tr>
+<td>ピンセットまたはラジオペンチ</td>
+<td>任意</td>
+<td>曲がったスイッチピンを直す際にあると便利です</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-組み立て前の注意">3. 組み立て前の注意</h2>
+<p>組み立てを始める前に、基板ウラ面の部品の状態がわかるような写真を撮影しておくことをお勧めします。初期不良で問い合わせる際の説明に役立ちます。</p>
+<div class="caution">
+<div class="title">
+<p>Caution</p>
+</div>
+<p>基板上の部品やコネクタ類は強い力に弱いです。スイッチやネジを取り付ける際は、無理な力を加えないように注意してください。</p>
+</div>
+<div class="caution">
+<div class="title">
+<p>Caution</p>
+</div>
+<p>キースイッチを取り付ける際は、スイッチのピンが曲がっていないことを確認してください。ピンが曲がった状態で押し込むと、ソケットや基板上の部品を破損する原因になります。組立時の破損は保証対象外となります。</p>
+</div>
+<h2 id="4-組み立て手順">4. 組み立て手順</h2>
+<h3 id="41-スタビライザーの取り付け">4.1 スタビライザーの取り付け</h3>
+<p>スタビライザーは基板のオモテ面に取り付けます。</p>
+<p>取り付け位置はレイアウトによって異なります。メイン基板上のガイドを参照してください。</p>
+<p>取り付け方はスタビライザーの説明書等を参照ください。一般には大きい穴の方にツメを引っかけ、小さい穴の方にプッシュピンを差し込む、もしくはネジ留めを行うものが多いです。</p>
+<h3 id="42-スイッチパッドの取り付け">4.2 スイッチパッドの取り付け</h3>
+<p>基板のオモテ面にスイッチパッドを乗せます。スイッチパッドの穴とスイッチの設置箇所が合う向きにしてください。</p>
+<p>スイッチパッドは打鍵音を小さくし、反響音を抑えるための部品です。取り付けは任意です。</p>
+<h3 id="43-スイッチとスイッチプレートの取り付け">4.3
+スイッチとスイッチプレートの取り付け</h3>
+<p>スイッチパッドの上にスイッチプレートを乗せ、その上からキースイッチを基板のソケットに差し込みます。</p>
+<p>差し込む前にスイッチの向きをよく確認してください。ほとんどのスイッチは南向き（ピンがキーボードの奥側向き）ですが、採用レイアウトによっては最下段に北向きの場所があります。</p>
+<p>まず四隅のスイッチを取り付けて基板・スイッチパッド・スイッチプレートの位置を合わせ、その後に残りのスイッチを取り付けると作業しやすいです。</p>
+<h3 id="44-ドーターボードの取り付け">4.4 ドーターボードの取り付け</h3>
+<p>ボトムプレートのガイドにドーターボードを取り付けます。USBコネクタがプレートの外側に向くように乗せて、ボトムプレートのウラ面からM2ネジ（黒）を通し、ドーターボード側からM2ナットで固定します。</p>
+<h3 id="45-ボトムプレートの取り付け">4.5 ボトムプレートの取り付け</h3>
+<p>ボトムプレート四隅の穴オモテ面側にスペーサーを乗せ、ウラ面からM3ネジ（黒）で取り付けます。</p>
+<p>ドーターボードにFPCケーブルを取り付けます。ケーブルの青色の面を上にしてコネクタに差し込んで固定してください。</p>
+<p>メイン基板側にも同様にFPCケーブルを取り付けますが、ケーブルが短いため、基板の自重などで引っ張られてコネクタに力がかからないように注意してください。</p>
+<div class="caution">
+<div class="title">
+<p>Caution</p>
+</div>
+<p>コネクタは非常に壊れやすい繊細な部品です。細心の注意を払って扱ってください。コネクタの破損は修復が困難で、基本的にマイコンボードや基板ごとの交換が必要になるため、くれぐれも注意してください。</p>
+</div>
+<p><a
+href="https://github.com/ymkn/Slab40/blob/main/doc/buildguide.md">Slab40のビルドガイド</a>や<a
+href="https://github.com/ymkn/Henge40/blob/main/doc/buildguide.md">Henge40のビルドガイド</a>で写真付きの説明があるので参考にしてください。</p>
+<p>スペーサーの上にシリコンワッシャーを乗せ、その上にFPCケーブルを接続したメイン基板とスイッチプレートを、シリコンワッシャーの上からスペーサーに乗せます。スイッチプレートのオモテ面からM3ネジ（金）で固定してください。</p>
+<div class="note">
+<div class="title">
+<p>Note</p>
+</div>
+<p>ネジを強く締め付けすぎないように注意してください。シリコンワッシャーが潰れすぎると打鍵感が固くなり、マウントの効果が弱くなります。まずは軽く固定される程度から始め、必要に応じて締め具合を調整してください。</p>
+</div>
+<h3 id="46-キーキャップの取り付け">4.6 キーキャップの取り付け</h3>
+<p>全てのスイッチにキーキャップを取り付けてください。</p>
+<div class="tip">
+<div class="title">
+<p>Tip</p>
+</div>
+<p>スタビライザーのあるキーキャップは、深く押し込み過ぎると戻りにくくなることがあります。スイッチのある中央部分だけを押し込んで取り付けるようにするとよいでしょう。</p>
+</div>
+<p>お好みに応じてボトムプレート底面にゴム足等の滑り止めを取り付ければ完成です。</p>
+<h2 id="5-使用">5. 使用</h2>
+<h3 id="51-動作確認">5.1 動作確認</h3>
+<p>コンピュータとHenge40をUSBケーブルで接続し、キーボードとして認識され、文字が入力できることを確認してください。</p>
+<p>キーボードとして認識されない場合は、USBケーブルを交換する、別のUSBポートに接続する、ハブを介さず直接接続するなどを試してください。</p>
+<p>一部のキーのみ反応しない場合は、そのキースイッチを抜いて、スイッチのピンが曲がっていないか確認してから挿し直してみてください。ピンが曲がっていない場合でも接触が悪いせいで動かないケースもあります。</p>
+<h3 id="52-キーマップのカスタマイズ">5.2 キーマップのカスタマイズ</h3>
+<p>本キーボードは<a
+href="https://get.vial.today/">Vial</a>というキーマップ変更ツールに対応しています。Vialの詳しい使いかたはVialのドキュメント等を参考にしてください。</p>
+<h2 id="6-その他">6. その他</h2>
+<h3 id="61-ブートモードの入り方">6.1 ブートモードの入り方</h3>
+<p>ブートモードに入るには、USBケーブルを切断してから、左上のキー（Tabキー）を押しながらUSBケーブルを接続します。もしくはドーターボード上のBOOTボタンを押しながらUSBケーブルを接続することでも可能です。</p>
+<h3 id="62-ファームウェアの書き込み方">6.2
+ファームウェアの書き込み方</h3>
+<p>※トラブル時など、必要がある場合のみ行ってください。</p>
+<p><a
+href="./firmware-rp2040.html">ファームウェアの書き込み方（RP2040搭載キーボード用）</a></p>
+<p>Henge40の初期ファームウェアは下記にあります。</p>
+<p><a
+href="https://github.com/ymkn/henge40/releases/download/v1.0/ymkn_Henge40_vial.uf2">https://github.com/ymkn/henge40/releases/download/v1.0/ymkn_Henge40_vial.uf2</a></p>
+<h3 id="63-ソースコード設計データのありか">6.3
+ソースコード/設計データのありか</h3>
+<p>Henge40のソースコードおよび設計データは下記で公開されています。</p>
+<p><a
+href="https://github.com/ymkn/henge40">https://github.com/ymkn/henge40</a></p>
+<h3 id="64-故障かなと思ったら">6.4 故障かなと思ったら</h3>
+<p>下記ページを参照してご確認ください。</p>
+<p><a href="./troubleshoot.html">故障かなと思ったら</a></p>
+<p>初期不良と思われる場合は<a
+href="https://ymkn.github.io/1u-nekokey/support/">サポートポリシー</a>をご参照のうえお問い合わせください。</p>
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-copyright">
+      <p>&copy; 2024 1uNekokey. All rights reserved.</p>
+    </div>
+    <div class="footer-links">
+      <a href="https://ymkn.github.io/1u-nekokey/products/henge40/" target="_blank" rel="noopener noreferrer" title="製品情報">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"/>
+        </svg>
+        <span>製品情報</span>
+      </a>
+      <a href="https://ymkn.booth.pm/items/8492404" target="_blank" rel="noopener noreferrer" title="購入はこちら">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+        </svg>
+        <span>購入はこちら</span>
+      </a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
